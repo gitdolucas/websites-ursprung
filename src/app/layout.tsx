@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import Providers from "@/components/Providers";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-headline",
@@ -49,6 +50,7 @@ export default function RootLayout({
         </a>
         <div className="grainy-overlay pointer-events-none fixed inset-0 z-[1]" aria-hidden />
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
