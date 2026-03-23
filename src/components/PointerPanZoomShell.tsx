@@ -46,14 +46,17 @@ export default function PointerPanZoomShell({
   const targetRef = useRef({ x: 0, y: 0, s: 1 });
   const currentRef = useRef({ x: 0, y: 0, s: 1 });
   const rafRef = useRef(0);
+  const tickRef = useRef<(() => void) | null>(null);
   const reduceMotionRef = useRef(false);
   const zoomRef = useRef(zoom);
   const maxPanRef = useRef(maxPanPx);
   const lerpRef = useRef(lerp);
 
-  zoomRef.current = zoom;
-  maxPanRef.current = maxPanPx;
-  lerpRef.current = lerp;
+  useEffect(() => {
+    zoomRef.current = zoom;
+    maxPanRef.current = maxPanPx;
+    lerpRef.current = lerp;
+  }, [zoom, maxPanPx, lerp]);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -94,14 +97,22 @@ export default function PointerPanZoomShell({
     const settled = dx < 0.04 && dy < 0.04 && ds < 0.002;
 
     if (!settled) {
-      rafRef.current = requestAnimationFrame(tick);
+      rafRef.current = requestAnimationFrame(() => {
+        tickRef.current?.();
+      });
     }
   }, [applyTransform]);
 
+  useEffect(() => {
+    tickRef.current = tick;
+  }, [tick]);
+
   const scheduleTick = useCallback(() => {
     cancelAnimationFrame(rafRef.current);
-    rafRef.current = requestAnimationFrame(tick);
-  }, [tick]);
+    rafRef.current = requestAnimationFrame(() => {
+      tickRef.current?.();
+    });
+  }, []);
 
   useEffect(
     () => () => cancelAnimationFrame(rafRef.current),

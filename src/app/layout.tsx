@@ -15,7 +15,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "URSPRUNG — O Gosto Autêntico do Brasil",
+  title: {
+    default: "URSPRUNG — O Gosto Autêntico do Brasil",
+    template: "%s | URSPRUNG",
+  },
   description:
     "Batidas artesanais brasileiras. Unimos a tradição do campo com a pulsação urbana.",
 };
@@ -37,6 +40,12 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+        <a
+          href="#main-content"
+          className="skip-link"
+        >
+          Ir para o conteúdo
+        </a>
         <div className="grainy-overlay fixed inset-0 z-50" />
         {children}
       </body>

@@ -1,14 +1,25 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Sobre",
+  description:
+    "A história da Ursprung: tradição artesanal, ingredientes naturais e o sabor autêntico das batidas brasileiras.",
+};
 
 export default function Sobre() {
   return (
     <>
       <Navbar />
 
-      <main className="pt-32 pb-20">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="scroll-mt-32 pt-32 pb-20 outline-none"
+      >
         {/* Hero Section */}
         <section className="px-6 py-12 md:py-24 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <div className="orchard-stagger-children md:w-1/2 z-10">
@@ -34,7 +45,7 @@ export default function Sobre() {
             </div>
           </div>
           <div className="orchard-stagger-children md:w-1/2 relative">
-            <div className="absolute -top-10 -right-10 w-64 h-64 bg-primary-container/10 rounded-full blur-[100px] -z-10" />
+            <div className="absolute -top-10 -right-10 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl -z-10" />
             <div className="relative rounded-[2rem] overflow-hidden border-2 border-outline-variant/30 group transition-[box-shadow] duration-500 ease-orchard hover:shadow-[0_24px_80px_-20px_rgba(161,254,0,0.12)]">
               <Image
                 className="w-full h-[600px] object-cover mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-[1.02] transition-[filter,transform] duration-[900ms] ease-orchard"
@@ -42,6 +53,8 @@ export default function Sobre() {
                 alt="Artisanal lime caipirinha preparation"
                 width={800}
                 height={600}
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             {/* Floating Element */}
@@ -100,6 +113,7 @@ export default function Sobre() {
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP9pDfmtGMOyzjpRyDwh5SRY1_MwIbkf-UFOOKXOTSjXxRkvKsmu-n6PS2qAlxB2_tFByI6XviO7uq_YKENC-q94RtpPuOWcQNGs6zrqgBF6xxkh5saB0AqWy0-KhY5qCNFJZRFrDlhKl3DichqbZuzf-AlTxGn8uQ8XS2VyhSAFOOw7KX9OdDSva3BHkp6uavtOSGInCHsUS5WuBKspMJUV_BnMSc2CzpcJWFXZPPA9Yl6wOEhID1ctd4Z9Sa3k1x9mid_x1t_hfX"
                 alt="Handcrafted batida preparation process"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent flex items-end p-10">
                 <p className="text-on-surface font-headline font-black text-2xl uppercase tracking-tighter">
@@ -131,6 +145,7 @@ export default function Sobre() {
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsy-c0dOaV3nfgpCTjJ6mXT-lORYE4FuPOenaLbAFWXuB9MrjBL9OUHbn3zbhkDp8JGJqO-NwyMcnZl1j9s5rzQmHXaNwLJWlyuTygLqPUhFmxvqBfLyQt7kbO8ijnpViFGaUdcOmBn6_mQZxjcpHM1zSs13tKLrf4B3MV8WtFnTyOvLmo0fH-WtXGvhxXZNZeFah87vAbx0NnC1Gh4QcJCGHqdvkd2ryVb9rVzOdjkMgxv2SbbN5Vv0zuduV8YqHWZoJurN-D2AP5"
                 alt="Friends sharing batidas"
                 fill
+                sizes="(max-width: 768px) 100vw, 25vw"
               />
               <div className="relative z-10 h-full flex flex-col justify-between">
                 <h3 className="font-headline font-black text-xl uppercase tracking-tighter">

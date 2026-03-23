@@ -1,13 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { WHATSAPP_DISPLAY, whatsappUrl } from "@/lib/contact";
 
-const WHATSAPP_NUMBER = "5547992483508";
-const WHATSAPP_DISPLAY = "47 99248-3508";
-
-function whatsappUrl(message: string) {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-}
+export const metadata: Metadata = {
+  title: "Contato",
+  description:
+    "Fale com a Ursprung pelo WhatsApp: pedidos, eventos, revenda e dúvidas. Atendimento em Balneário Camboriú e região.",
+};
 
 const quickMessages = [
   {
@@ -43,7 +44,11 @@ export default function Contato() {
     <>
       <Navbar />
 
-      <main className="pt-28 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="scroll-mt-28 pt-28 pb-20 px-4 md:px-8 max-w-7xl mx-auto outline-none"
+      >
         {/* Hero */}
         <section className="mb-16">
           <div className="relative overflow-hidden bg-surface-container-low rounded-xl p-8 md:p-16 border-l-4 border-[#25d366] transition-[box-shadow] duration-500 ease-orchard hover:shadow-[0_20px_60px_-20px_rgba(37,211,102,0.08)]">
