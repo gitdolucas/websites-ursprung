@@ -1,26 +1,194 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-error-container: #b92902;
+  --color-on-primary: #3e6600;
+  --color-on-surface: #fbfbe2;
+  --color-surface-container: #191b0a;
+  --color-on-error: #450900;
+  --color-on-tertiary-fixed-variant: #416f5d;
+  --color-primary-fixed-dim: #97ee00;
+  --color-secondary-fixed: #ffc5a9;
+  --color-secondary: #ff7518;
+  --color-inverse-primary: #416a00;
+  --color-background: #0e0f03;
+  --color-on-secondary-fixed-variant: #883900;
+  --color-on-primary-fixed-variant: #3f6800;
+  --color-on-primary-container: #385d00;
+  --color-error-dim: #d53d18;
+  --color-surface-container-low: #131406;
+  --color-surface-tint: #ddffb0;
+  --color-secondary-fixed-dim: #ffb28b;
+  --color-on-secondary-fixed: #5b2300;
+  --color-error: #ff7351;
+  --color-on-surface-variant: #acad96;
+  --color-primary-dim: #97ee00;
+  --color-surface-container-lowest: #000000;
+  --color-outline: #767763;
+  --color-secondary-container: #9e4300;
+  --color-primary: #ddffb0;
+  --color-on-error-container: #ffd2c8;
+  --color-on-tertiary-fixed: #245242;
+  --color-on-primary-fixed: #2b4900;
+  --color-tertiary-dim: #a9d9c4;
+  --color-surface-container-highest: #252713;
+  --color-on-secondary: #3b1400;
+  --color-secondary-dim: #ff7518;
+  --color-primary-fixed: #a1fe00;
+  --color-surface-dim: #0e0f03;
+  --color-inverse-surface: #fbfbe2;
+  --color-tertiary-container: #c4f6e0;
+  --color-tertiary-fixed-dim: #bff0da;
+  --color-surface: #0e0f03;
+  --color-surface-variant: #252713;
+  --color-tertiary: #e7fff2;
+  --color-primary-container: #a1fe00;
+  --color-surface-bright: #2b2e17;
+  --color-on-tertiary-container: #325f4e;
+  --color-on-background: #fbfbe2;
+  --color-on-tertiary: #3a6856;
+  --color-surface-container-high: #1f210e;
+  --color-tertiary-fixed: #cdffe8;
+  --color-outline-variant: #484937;
+  --color-inverse-on-surface: #555644;
+  --color-on-secondary-container: #fff6f3;
+
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+
+  /* Motion — see DESIGN.md § Motion & Transitions */
+  --ease-orchard: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-instant: 120ms;
+  --duration-snappy: 220ms;
+  --duration-standard: 320ms;
+  --duration-bento: 500ms;
+  --duration-hero: 680ms;
+  --duration-ambient: 900ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.grainy-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.neon-glow {
+  text-shadow: 0 0 20px rgba(221, 255, 176, 0.4);
+}
+
+.glass-card {
+  background: rgba(37, 39, 19, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(72, 73, 55, 0.2);
+}
+
+@keyframes orchard-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Staggered entrance: bento grid (home) */
+.home-bento-stagger > * {
+  animation: orchard-fade-up var(--duration-hero) var(--ease-orchard) both;
+}
+
+.home-bento-stagger > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.home-bento-stagger > *:nth-child(2) {
+  animation-delay: 70ms;
+}
+.home-bento-stagger > *:nth-child(3) {
+  animation-delay: 140ms;
+}
+.home-bento-stagger > *:nth-child(4) {
+  animation-delay: 210ms;
+}
+.home-bento-stagger > *:nth-child(5) {
+  animation-delay: 280ms;
+}
+.home-bento-stagger > *:nth-child(6) {
+  animation-delay: 350ms;
+}
+.home-bento-stagger > *:nth-child(7) {
+  animation-delay: 420ms;
+}
+.home-bento-stagger > *:nth-child(8) {
+  animation-delay: 490ms;
+}
+
+/* Hero copy: second wave inside first tile */
+.hero-content-stagger > * {
+  animation: orchard-fade-up calc(var(--duration-hero) * 0.88) var(--ease-orchard)
+    both;
+}
+
+.hero-content-stagger > *:nth-child(1) {
+  animation-delay: 160ms;
+}
+.hero-content-stagger > *:nth-child(2) {
+  animation-delay: 260ms;
+}
+.hero-content-stagger > *:nth-child(3) {
+  animation-delay: 380ms;
+}
+
+/* Interior pages: sections, grids, hero copy blocks */
+.orchard-stagger-children > * {
+  animation: orchard-fade-up var(--duration-hero) var(--ease-orchard) both;
+}
+
+.orchard-stagger-children > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.orchard-stagger-children > *:nth-child(2) {
+  animation-delay: 70ms;
+}
+.orchard-stagger-children > *:nth-child(3) {
+  animation-delay: 140ms;
+}
+.orchard-stagger-children > *:nth-child(4) {
+  animation-delay: 210ms;
+}
+.orchard-stagger-children > *:nth-child(5) {
+  animation-delay: 280ms;
+}
+.orchard-stagger-children > *:nth-child(6) {
+  animation-delay: 350ms;
+}
+.orchard-stagger-children > *:nth-child(7) {
+  animation-delay: 420ms;
+}
+.orchard-stagger-children > *:nth-child(8) {
+  animation-delay: 490ms;
+}
+.orchard-stagger-children > *:nth-child(9) {
+  animation-delay: 560ms;
+}
+.orchard-stagger-children > *:nth-child(10) {
+  animation-delay: 630ms;
+}
+.orchard-stagger-children > *:nth-child(11) {
+  animation-delay: 700ms;
+}
+.orchard-stagger-children > *:nth-child(12) {
+  animation-delay: 770ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-bento-stagger > *,
+  .hero-content-stagger > *,
+  .orchard-stagger-children > * {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
 }
