@@ -50,7 +50,7 @@ export default function Navbar() {
   }, [menuOpen]);
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 top-4 z-40 flex justify-center px-3 sm:px-6">
+    <div className="pointer-events-none fixed inset-x-0 top-4 z-50 flex justify-center px-3 sm:px-6">
       <nav
         ref={navRef}
         className="pointer-events-auto flex w-full min-w-0 max-w-7xl flex-wrap items-center justify-between gap-x-2 gap-y-3 overflow-x-clip rounded-2xl border border-outline-variant/15 bg-surface-container-highest/80 px-3 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.08)] backdrop-blur-md sm:gap-3 sm:px-6 md:px-8 md:py-4"

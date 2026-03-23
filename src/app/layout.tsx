@@ -47,7 +47,8 @@ export default function RootLayout({
         >
           Ir para o conteúdo
         </a>
-        <div className="grainy-overlay fixed inset-0 z-50" />
+        {/* z below Navbar (z-50): overlay must not sit above taps — iOS can ignore pointer-events:none on composited fixed layers */}
+        <div className="grainy-overlay pointer-events-none fixed inset-0 z-[1]" aria-hidden />
         <Providers>{children}</Providers>
       </body>
     </html>
