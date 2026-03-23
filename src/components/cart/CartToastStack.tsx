@@ -16,11 +16,13 @@ const EXIT_ANIMATION_MS = 180;
 function ToastRow({
   toast,
   onDismiss,
+  onDismissAll,
   isPaused,
   onHoverChange,
 }: {
   toast: CartToastItem;
   onDismiss: (id: string) => void;
+  onDismissAll: () => void;
   isPaused: boolean;
   onHoverChange: (isHovering: boolean) => void;
 }) {
@@ -77,7 +79,7 @@ function ToastRow({
     >
       <Link
         href="/checkout"
-        onClick={queueClose}
+        onClick={onDismissAll}
         className="min-w-0 flex-1 flex items-center gap-3 rounded-lg px-2 py-1.5 text-left text-on-surface transition-colors hover:bg-surface-variant/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         aria-label={`${message}. Ir para o carrinho e pedidos.`}
       >
@@ -101,7 +103,7 @@ function ToastRow({
       </Link>
       <button
         type="button"
-        onClick={queueClose}
+        onClick={onDismissAll}
         className="shrink-0 self-start rounded-lg p-1.5 text-on-surface-variant transition-colors hover:bg-surface-variant hover:text-on-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         aria-label="Fechar aviso"
       >
@@ -116,9 +118,11 @@ function ToastRow({
 export default function CartToastStack({
   toasts,
   onDismiss,
+  onDismissAll,
 }: {
   toasts: CartToastItem[];
   onDismiss: (id: string) => void;
+  onDismissAll: () => void;
 }) {
   const [hoveredCount, setHoveredCount] = useState(0);
   const isPaused = hoveredCount > 0;
@@ -147,6 +151,7 @@ export default function CartToastStack({
             key={toast.id}
             toast={toast}
             onDismiss={onDismiss}
+            onDismissAll={onDismissAll}
             isPaused={isPaused}
             onHoverChange={handleHoverChange}
           />

@@ -91,6 +91,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setToasts((prev) => prev.filter((t) => t.id !== toastId));
   }, []);
 
+  const dismissAllToasts = useCallback(() => {
+    setToasts([]);
+  }, []);
+
   const addToCart = useCallback((id: ProductId, quantity = 1) => {
     if (!productIds.has(id)) return;
     const q = Math.min(99, Math.max(1, Math.floor(quantity)));
@@ -169,7 +173,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   return (
     <CartContext.Provider value={value}>
       {children}
-      <CartToastStack toasts={toasts} onDismiss={dismissToast} />
+      <CartToastStack
+        toasts={toasts}
+        onDismiss={dismissToast}
+        onDismissAll={dismissAllToasts}
+      />
     </CartContext.Provider>
   );
 }
