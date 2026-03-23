@@ -232,7 +232,194 @@ html.dark {
   animation-delay: 770ms;
 }
 
+/* /produtos — typography override (Syne + DM Sans via layout) */
+.produtos-theme {
+  --font-headline: var(--font-produtos-display), ui-sans-serif, system-ui,
+    sans-serif;
+  --font-body: var(--font-produtos-body), ui-sans-serif, system-ui, sans-serif;
+  --font-label: var(--font-produtos-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+.produtos-atmosphere {
+  position: relative;
+  isolation: isolate;
+  /* Pseudo-elements & decorative orbs stay inside width — no document X-scroll */
+  overflow-x: clip;
+}
+
+.produtos-atmosphere::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20%;
+  height: min(72vh, 640px);
+  background: radial-gradient(
+      ellipse 80% 60% at 15% 20%,
+      rgba(255, 117, 24, 0.12),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 85% 10%,
+      rgba(221, 255, 176, 0.1),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 50% 0%,
+      rgba(196, 246, 224, 0.06),
+      transparent 45%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.produtos-atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    165deg,
+    transparent 0%,
+    transparent 42%,
+    rgba(14, 15, 3, 0.65) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.produtos-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .produtos-hero-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.55fr);
+    align-items: end;
+  }
+}
+
+.produtos-hero-index {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(72, 73, 55, 0.35);
+  background: linear-gradient(
+    145deg,
+    rgba(37, 39, 19, 0.85) 0%,
+    rgba(19, 20, 6, 0.92) 100%
+  );
+  box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.55);
+}
+
+.produtos-hero-index-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+  border-bottom: 1px solid rgba(72, 73, 55, 0.35);
+  padding-bottom: 0.5rem;
+}
+
+.produtos-hero-index-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.produtos-hero-index-row span:last-child {
+  font-family: var(--font-headline);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--color-primary);
+}
+
+@keyframes produtos-orb-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate(-1.5%, -1.5%) scale(1.03);
+    opacity: 0.75;
+  }
+}
+
+.produtos-hero-orb {
+  position: absolute;
+  width: min(42vw, 280px);
+  height: min(42vw, 280px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(221, 255, 176, 0.18),
+    transparent 62%
+  );
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: 0;
+  right: 0;
+  top: 8%;
+  /* Drift stays inside clipped main — no translate toward viewport edge */
+  animation: produtos-orb-drift 14s var(--ease-orchard) infinite;
+}
+
+.produtos-bento-stagger > * {
+  animation: orchard-fade-up var(--duration-hero) var(--ease-orchard) both;
+}
+
+.produtos-bento-stagger > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.produtos-bento-stagger > *:nth-child(2) {
+  animation-delay: 70ms;
+}
+.produtos-bento-stagger > *:nth-child(3) {
+  animation-delay: 140ms;
+}
+.produtos-bento-stagger > *:nth-child(4) {
+  animation-delay: 210ms;
+}
+.produtos-bento-stagger > *:nth-child(5) {
+  animation-delay: 280ms;
+}
+.produtos-bento-stagger > *:nth-child(6) {
+  animation-delay: 350ms;
+}
+.produtos-bento-stagger > *:nth-child(7) {
+  animation-delay: 420ms;
+}
+.produtos-bento-stagger > *:nth-child(8) {
+  animation-delay: 490ms;
+}
+.produtos-bento-stagger > *:nth-child(9) {
+  animation-delay: 560ms;
+}
+.produtos-bento-stagger > *:nth-child(10) {
+  animation-delay: 630ms;
+}
+.produtos-bento-stagger > *:nth-child(11) {
+  animation-delay: 700ms;
+}
+.produtos-bento-stagger > *:nth-child(12) {
+  animation-delay: 770ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .produtos-hero-orb {
+    animation: none;
+  }
+
+  .produtos-bento-stagger > *,
   .home-bento-stagger > *,
   .hero-content-stagger > *,
   .orchard-stagger-children > * {
@@ -240,5 +427,4 @@ html.dark {
     opacity: 1;
     transform: none;
   }
-
 }

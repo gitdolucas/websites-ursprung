@@ -38,7 +38,7 @@ export default function Sobre() {
             <div className="flex gap-4">
               <Link
                 href="/produtos"
-                className="bg-primary-container text-on-primary-container font-headline font-black py-5 px-10 rounded-xl uppercase tracking-tighter text-xl hover:scale-[1.02] active:scale-[0.98] transition-[transform,box-shadow] duration-300 ease-orchard shadow-[0_0_30px_rgba(161,254,0,0.2)] hover:shadow-[0_0_40px_rgba(161,254,0,0.35)]"
+                className="bg-primary-container text-on-primary-container font-headline font-black py-5 px-10 rounded-xl uppercase tracking-tighter text-xl hover:bg-primary-fixed hover:text-on-primary-fixed hover:scale-[1.02] active:scale-[0.98] transition-[background-color,color,transform,box-shadow] duration-300 ease-orchard shadow-[0_0_30px_rgba(161,254,0,0.2)] hover:shadow-[0_0_40px_rgba(161,254,0,0.35)]"
               >
                 Descubra Nossas Batidas
               </Link>
@@ -242,7 +242,7 @@ export default function Sobre() {
             </p>
             <Link
               href="/produtos"
-              className="bg-primary-container text-on-primary-container font-headline font-black py-6 px-16 rounded-xl uppercase tracking-tighter text-2xl shadow-[0_20px_50px_rgba(161,254,0,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-[transform,box-shadow] duration-300 ease-orchard hover:shadow-[0_24px_60px_rgba(161,254,0,0.4)]"
+              className="bg-primary-container text-on-primary-container font-headline font-black py-6 px-16 rounded-xl uppercase tracking-tighter text-2xl shadow-[0_20px_50px_rgba(161,254,0,0.3)] hover:bg-primary-fixed hover:text-on-primary-fixed hover:scale-[1.02] active:scale-[0.98] transition-[background-color,color,transform,box-shadow] duration-300 ease-orchard hover:shadow-[0_24px_60px_rgba(161,254,0,0.4)]"
             >
               Explorar Loja
             </Link>

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ProdutosGridItem from "@/components/ProdutosGridItem";
-import { produtosGrid } from "@/data/products";
+import ProdutosCatalog from "@/components/produtos/ProdutosCatalog";
+import { produtosGrid, products } from "@/data/products";
 
 export const metadata: Metadata = {
   title: "Produtos",
@@ -10,7 +11,12 @@ export const metadata: Metadata = {
     "Catálogo de batidas artesanais Ursprung: sabores tropicais, edições limitadas e kits. Cachaça de alambique e frutas frescas.",
 };
 
+const fv =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
+
 export default function Produtos() {
+  const count = Object.keys(products).length;
+
   return (
     <>
       <Navbar />
@@ -18,89 +24,98 @@ export default function Produtos() {
       <main
         id="main-content"
         tabIndex={-1}
-        className="scroll-mt-28 pt-24 pb-20 outline-none"
+        className="produtos-atmosphere relative max-w-full scroll-mt-28 pt-24 pb-24 outline-none md:pb-28"
       >
-        {/* Hero Section */}
-        <section className="px-8 py-16 md:py-24 max-w-7xl mx-auto">
-          <div className="relative overflow-hidden bg-surface-container-low rounded-xl p-8 md:p-16 border-l-4 border-primary transition-[box-shadow,border-color] duration-500 ease-orchard hover:shadow-[0_20px_60px_-20px_rgba(221,255,176,0.06)]">
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent pointer-events-none transition-opacity duration-700 ease-orchard" />
-            <div className="orchard-stagger-children relative z-10 max-w-2xl">
-              <span className="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-widest uppercase bg-tertiary-container text-on-tertiary-container rounded-full">
-                Artesanal &amp; Digital
-              </span>
-              <h1 className="text-5xl md:text-7xl font-headline font-bold text-on-surface tracking-tighter leading-none mb-6">
-                Coleções Tropicais
-              </h1>
-              <p className="text-lg md:text-xl font-body text-on-surface-variant leading-relaxed">
-                Experimente a fusão eletrizante entre a tradição dos destilados
-                brasileiros e a precisão do futuro neon. Batidas formuladas com
-                frutas frescas e cachaça de alambique premium.
+        <div className="produtos-hero-orb motion-reduce:hidden" aria-hidden />
+
+        <section className="relative z-[1] px-4 sm:px-8 pt-10 pb-6 md:pt-14 md:pb-10 max-w-7xl mx-auto">
+          <div className="produtos-hero-grid">
+            <div className="orchard-stagger-children relative">
+              <p className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold tracking-[0.28em] uppercase text-secondary mb-5">
+                <span
+                  className="h-px w-8 bg-gradient-to-r from-secondary to-transparent"
+                  aria-hidden
+                />
+                Catálogo ursprung
               </p>
+              <h1 className="text-pretty font-headline font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-[4.25rem] leading-[0.95] tracking-tight text-on-surface mb-6">
+                <span className="block bg-gradient-to-br from-primary via-primary-fixed to-tertiary-dim bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(221,255,176,0.12)]">
+                  Coleções tropicais
+                </span>
+                <span className="block mt-2 text-on-surface/95">
+                  &amp; edições de pico
+                </span>
+              </h1>
+              <p className="max-w-xl font-body text-base sm:text-lg text-on-surface-variant leading-relaxed mb-8">
+                Batidas de alambique com fruta de verdade — entre o brejo e o
+                asfalto. Filtre por linha ou busque por nota e nome.
+              </p>
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  href="/checkout"
+                  className={`${fv} inline-flex items-center gap-2 rounded-full bg-secondary px-6 py-3 font-headline text-sm font-bold uppercase tracking-wide text-on-secondary shadow-[0_12px_40px_-8px_rgba(255,117,24,0.35)] transition-[transform,box-shadow,background-color,color] duration-300 ease-orchard hover:-translate-y-0.5 hover:bg-secondary-container hover:text-on-secondary-container hover:shadow-[0_16px_48px_-6px_rgba(255,117,24,0.45)] active:scale-[0.98] motion-reduce:hover:translate-y-0`}
+                >
+                  Finalizar pedido
+                  <span className="material-symbols-outlined text-lg" aria-hidden>
+                    shopping_bag
+                  </span>
+                </Link>
+                <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant/90">
+                  {count} rótulos vivos no grid
+                </span>
+              </div>
             </div>
+
+            <aside
+              className="produtos-hero-index orchard-stagger-children lg:justify-self-end w-full max-w-md lg:max-w-none"
+              aria-label="Resumo do catálogo"
+            >
+              <div className="produtos-hero-index-row">
+                <span>Origem</span>
+                <span>Brasil</span>
+              </div>
+              <div className="produtos-hero-index-row">
+                <span>Processo</span>
+                <span>Pequenos lotes</span>
+              </div>
+              <div className="produtos-hero-index-row">
+                <span>Nota</span>
+                <span>Fruta + cachaça</span>
+              </div>
+              <div className="produtos-hero-index-row">
+                <span>Edição</span>
+                <span>2025</span>
+              </div>
+            </aside>
           </div>
         </section>
 
-        {/* Filter Bar */}
-        <section className="px-8 mb-12 max-w-7xl mx-auto">
-          <div className="orchard-stagger-children flex flex-wrap gap-4 items-center">
-            <button
-              type="button"
-              className="px-6 py-2 bg-primary text-on-primary font-bold rounded-md hover:scale-[1.02] active:scale-[0.97] transition-[transform,box-shadow] duration-300 ease-orchard hover:shadow-[0_8px_28px_rgba(221,255,176,0.15)]"
-            >
-              Todos
-            </button>
-            <button
-              type="button"
-              className="px-6 py-2 glass-card text-on-surface font-medium rounded-md hover:bg-surface-variant transition-[background-color,transform] duration-300 ease-orchard hover:-translate-y-0.5 active:scale-[0.98]"
-            >
-              Frutas Tropicais
-            </button>
-            <button
-              type="button"
-              className="px-6 py-2 glass-card text-on-surface font-medium rounded-md hover:bg-surface-variant transition-[background-color,transform] duration-300 ease-orchard hover:-translate-y-0.5 active:scale-[0.98]"
-            >
-              Edições Limitadas
-            </button>
-            <button
-              type="button"
-              className="px-6 py-2 glass-card text-on-surface font-medium rounded-md hover:bg-surface-variant transition-[background-color,transform] duration-300 ease-orchard hover:-translate-y-0.5 active:scale-[0.98]"
-            >
-              Kits de Presente
-            </button>
-            <div className="ml-auto flex items-center glass-card rounded-md px-4 py-2 border border-outline-variant/15 transition-[border-color,box-shadow] duration-300 ease-orchard focus-within:border-primary/40 focus-within:shadow-[0_0_0_1px_rgba(221,255,176,0.12)]">
-              <span className="material-symbols-outlined text-on-surface-variant mr-2">
-                search
-              </span>
-              <input
-                className="bg-transparent border-none focus:ring-0 text-sm text-on-surface w-40 md:w-64 outline-none transition-[color] duration-300 ease-orchard"
-                placeholder="Buscar sabor..."
-                type="text"
-              />
-            </div>
-          </div>
-        </section>
+        <ProdutosCatalog sections={produtosGrid} />
 
-        {/* Bento Grid Gallery */}
-        <section className="px-8 max-w-7xl mx-auto">
-          <div className="orchard-stagger-children grid grid-cols-1 md:grid-cols-12 gap-6">
-            {produtosGrid.map((section) => (
-              <ProdutosGridItem key={section.id} section={section} />
-            ))}
-          </div>
-        </section>
-
-        {/* Artisanal Badge Section */}
-        <section className="mt-24 px-8 max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-4 glass-card rounded-full px-6 py-3 border border-outline-variant/15 transition-[transform,border-color,box-shadow] duration-500 ease-orchard hover:-translate-y-0.5 hover:border-primary/25">
+        <section className="relative z-[1] mt-20 md:mt-28 px-4 sm:px-8 max-w-7xl mx-auto">
+          <div className="relative overflow-hidden rounded-2xl border border-outline-variant/25 bg-gradient-to-br from-surface-container-highest via-surface-container-low to-surface-container-high px-8 py-12 md:px-14 md:py-16 text-center">
+            <div
+              className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/10 blur-3xl"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute -bottom-20 left-1/4 h-40 w-40 rounded-full bg-secondary/15 blur-3xl"
+              aria-hidden
+            />
             <span
-              className="material-symbols-outlined text-primary"
+              className="material-symbols-outlined text-primary text-3xl mb-4 inline-block"
               style={{ fontVariationSettings: "'FILL' 1" }}
+              aria-hidden
             >
               verified
             </span>
-            <span className="font-label text-sm font-bold uppercase tracking-widest text-on-surface">
-              Destilado no Brasil • 100% Natural • Sem Conservantes
-            </span>
+            <p className="font-headline text-xl md:text-2xl font-bold text-on-surface tracking-tight mb-3">
+              Destilado no Brasil • 100% natural • Sem conservantes
+            </p>
+            <p className="font-body text-on-surface-variant max-w-lg mx-auto text-sm md:text-base leading-relaxed">
+              Cada garrafa é um recorte do que acreditamos: sabor honesto,
+              embalagem que brilha na vitrine e respeito ao produtor.
+            </p>
           </div>
         </section>
       </main>

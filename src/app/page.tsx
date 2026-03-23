@@ -55,7 +55,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-4 items-center">
                 <Link
                   href="/produtos"
-                  className={`group/cta bg-primary text-on-primary px-8 py-4 font-headline font-bold uppercase tracking-tighter text-xl rounded-lg shadow-[0_10px_40px_rgba(221,255,176,0.2)] hover:bg-primary-fixed transition-[background-color,transform,box-shadow] duration-300 ease-orchard hover:scale-[1.02] hover:shadow-[0_14px_48px_rgba(221,255,176,0.28)] active:scale-[0.98] motion-reduce:hover:scale-100 motion-reduce:active:scale-100 flex items-center gap-3 ${fvInverse}`}
+                  className={`group/cta bg-primary text-on-primary px-8 py-4 font-headline font-bold uppercase tracking-tighter text-xl rounded-lg shadow-[0_10px_40px_rgba(221,255,176,0.2)] hover:bg-primary-fixed hover:text-on-primary-fixed transition-[background-color,color,transform,box-shadow] duration-300 ease-orchard hover:scale-[1.02] hover:shadow-[0_14px_48px_rgba(161,254,0,0.32)] active:scale-[0.98] motion-reduce:hover:scale-100 motion-reduce:active:scale-100 flex items-center gap-3 ${fvInverse}`}
                 >
                   Explorar Sabores
                   <span
@@ -122,7 +122,7 @@ export default function Home() {
                 <button
                   type="button"
                   aria-label={`Adicionar ${maracuja.name} ao carrinho`}
-                  className={`w-12 h-12 shrink-0 bg-on-surface text-background flex items-center justify-center rounded-lg group-hover:bg-primary transition-[background-color,transform] duration-300 ease-orchard group-hover:scale-105 active:scale-95 motion-reduce:group-hover:scale-100 motion-reduce:active:scale-100 ${fv}`}
+                  className={`w-12 h-12 shrink-0 bg-on-surface text-background flex items-center justify-center rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-[background-color,color,transform] duration-300 ease-orchard group-hover:scale-105 active:scale-95 motion-reduce:group-hover:scale-100 motion-reduce:active:scale-100 ${fv}`}
                 >
                   <span className="material-symbols-outlined" aria-hidden>
                     shopping_bag
@@ -157,7 +157,7 @@ export default function Home() {
                 <button
                   type="button"
                   aria-label={`Adicionar ${limao.name} ao carrinho`}
-                  className={`shrink-0 bg-primary text-on-primary px-6 py-3 font-headline font-bold uppercase rounded-lg flex items-center gap-2 transition-[transform,box-shadow] duration-300 ease-orchard hover:scale-[1.03] hover:shadow-[inset_0_0_24px_rgba(233,193,111,0.35)] active:scale-[0.98] motion-reduce:hover:scale-100 motion-reduce:active:scale-100 ${fvInverse}`}
+                  className={`shrink-0 bg-primary text-on-primary px-6 py-3 font-headline font-bold uppercase rounded-lg flex items-center gap-2 transition-[background-color,color,transform,box-shadow] duration-300 ease-orchard hover:bg-primary-fixed hover:text-on-primary-fixed hover:scale-[1.03] hover:shadow-[inset_0_0_28px_rgba(62,102,0,0.12)] active:scale-[0.98] motion-reduce:hover:scale-100 motion-reduce:active:scale-100 ${fvInverse}`}
                 >
                   Add{" "}
                   <span
