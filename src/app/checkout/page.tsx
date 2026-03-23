@@ -3,17 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { WHATSAPP_DISPLAY, whatsappUrl } from "@/lib/contact";
+import CheckoutCartSection from "@/components/checkout/CheckoutCartSection";
 import { checkoutHighlightIds, products } from "@/data/products";
 
 export const metadata: Metadata = {
   title: "Pedidos",
   description:
-    "Peça batidas Ursprung pelo WhatsApp: combinamos sabores, quantidades e entrega. Veja destaques e fale direto com a equipe.",
+    "Monte seu carrinho e peça batidas Ursprung pelo WhatsApp: a mensagem leva sabores e quantidades; combinamos entrega com a equipe.",
 };
-
-const ORDER_MESSAGE =
-  "Olá! Quero fazer um pedido de batidas Ursprung. Pode me ajudar com valores e entrega?";
 
 export default function CheckoutPage() {
   return (
@@ -33,38 +30,13 @@ export default function CheckoutPage() {
             Finalize pelo WhatsApp
           </h1>
           <p className="text-lg md:text-xl text-on-surface-variant font-body max-w-2xl leading-relaxed">
-            Nosso checkout é humano: você chama no WhatsApp, combinamos sabores,
-            quantidades e entrega na região. Sem carrinho automático — atendimento
-            direto da equipe Ursprung.
+            Use o carrinho para escolher sabores e quantidades; ao enviar, abrimos
+            o WhatsApp com o pedido por escrito. Valores finais e entrega na região
+            combinamos direto com a equipe Ursprung.
           </p>
         </section>
 
-        <section className="mb-14">
-          <a
-            href={whatsappUrl(ORDER_MESSAGE)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block"
-          >
-            <div className="bg-[#25d366] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg shadow-[#25d366]/20 hover:shadow-xl hover:shadow-[#25d366]/35 hover:scale-[1.01] active:scale-[0.99] transition-[transform,box-shadow] duration-300 ease-orchard focus-within:ring-2 focus-within:ring-white focus-within:ring-offset-2 focus-within:ring-offset-background">
-              <div>
-                <p className="text-white/90 font-body text-sm uppercase tracking-widest mb-1">
-                  Falar agora
-                </p>
-                <p className="font-headline font-black text-3xl md:text-4xl text-white tracking-tighter">
-                  {WHATSAPP_DISPLAY}
-                </p>
-                <p className="text-white/85 font-body mt-2">
-                  Abre o WhatsApp com uma mensagem pronta para o pedido.
-                </p>
-              </div>
-              <span className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-xl px-8 py-4 font-headline font-bold text-white uppercase tracking-widest group-hover:bg-white/30 transition-colors">
-                Enviar pedido
-                <span className="material-symbols-outlined">arrow_forward</span>
-              </span>
-            </div>
-          </a>
-        </section>
+        <CheckoutCartSection />
 
         <section className="mb-12">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
+import { useCart } from "@/contexts/CartContext";
 
 const links = [
   { href: "/", label: "Início" },
@@ -11,8 +12,19 @@ const links = [
   { href: "/contato", label: "Contato" },
 ];
 
+function CartCountBadge({ count }: { count: number }) {
+  if (count <= 0) return null;
+  const label = count > 99 ? "99+" : String(count);
+  return (
+    <span className="absolute -right-1 -top-1 flex min-h-[1.125rem] min-w-[1.125rem] items-center justify-center rounded-full bg-secondary px-1 text-[10px] font-headline font-bold leading-none text-on-secondary shadow-sm">
+      {label}
+    </span>
+  );
+}
+
 export default function Navbar() {
   const pathname = usePathname();
+  const { totalCount } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuPanelId = useId();
   const navRef = useRef<HTMLElement>(null);
@@ -50,21 +62,28 @@ export default function Navbar() {
           URSPRUNG
         </Link>
 
-        <div className="flex shrink-0 items-center gap-1.5 sm:gap-3 md:ml-0">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3 md:gap-0 md:ml-0">
           <button
             type="button"
-            className="md:hidden flex size-10 shrink-0 items-center justify-center rounded-lg border border-outline-variant/30 text-on-surface transition-[background-color,color,border-color] duration-200 hover:bg-surface-variant focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:size-11"
+            className="md:hidden relative flex size-10 shrink-0 items-center justify-center rounded-lg border border-outline-variant/30 text-on-surface transition-[background-color,color,border-color] duration-200 hover:bg-surface-variant focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:size-11"
             aria-expanded={menuOpen}
             aria-controls={menuPanelId}
-            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-label={
+              menuOpen
+                ? "Fechar menu"
+                : totalCount > 0
+                  ? `Abrir menu, carrinho com ${totalCount} itens`
+                  : "Abrir menu"
+            }
             onClick={() => setMenuOpen((o) => !o)}
           >
             <span className="material-symbols-outlined text-2xl" aria-hidden>
               {menuOpen ? "close" : "menu"}
             </span>
+            {!menuOpen ? <CartCountBadge count={totalCount} /> : null}
           </button>
 
-          <div className="hidden md:flex gap-8 items-center">
+          <div className="hidden md:flex items-center gap-8 pr-8 mr-2 border-r border-outline-variant/25">
             {links.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -85,7 +104,22 @@ export default function Navbar() {
 
           <Link
             href="/checkout"
-            className="rounded-lg bg-primary px-3 py-2 font-headline text-[11px] font-bold uppercase tracking-wide text-on-primary transition-[transform] duration-200 active:scale-90 motion-reduce:active:scale-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0e0f03] sm:px-6 sm:text-sm sm:tracking-widest"
+            className="relative hidden md:flex size-11 shrink-0 items-center justify-center rounded-lg border border-outline-variant/30 text-on-surface transition-[background-color,color,border-color] duration-200 hover:bg-surface-variant hover:border-primary/35 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ml-6"
+            aria-label={
+              totalCount > 0
+                ? `Carrinho, ${totalCount} itens`
+                : "Carrinho vazio"
+            }
+          >
+            <span className="material-symbols-outlined text-2xl" aria-hidden>
+              shopping_bag
+            </span>
+            <CartCountBadge count={totalCount} />
+          </Link>
+
+          <Link
+            href="/checkout"
+            className="rounded-lg bg-primary px-3 py-2 font-headline text-[11px] font-bold uppercase tracking-wide text-on-primary transition-[transform] duration-200 active:scale-90 motion-reduce:active:scale-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0e0f03] sm:px-6 sm:text-sm sm:tracking-widest md:ml-5"
           >
             <span className="sm:hidden">Pedir</span>
             <span className="hidden sm:inline">Pedir Agora</span>
@@ -99,6 +133,33 @@ export default function Navbar() {
             role="navigation"
             aria-label="Principal"
           >
+            <Link
+              href="/checkout"
+              onClick={() => setMenuOpen(false)}
+              className={`font-headline font-bold tracking-tighter uppercase py-3 px-2 rounded-lg transition-[color,background-color,opacity] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary flex items-center justify-between gap-3 ${
+                pathname === "/checkout"
+                  ? "text-primary bg-primary/10"
+                  : "text-on-surface opacity-90 hover:bg-surface-variant"
+              }`}
+            >
+              <span className="flex items-center gap-3 min-w-0">
+                <span className="relative inline-flex shrink-0">
+                  <span
+                    className="material-symbols-outlined text-2xl"
+                    aria-hidden
+                  >
+                    shopping_bag
+                  </span>
+                  <CartCountBadge count={totalCount} />
+                </span>
+                Carrinho
+              </span>
+              {totalCount > 0 ? (
+                <span className="tabular-nums text-sm font-headline text-on-surface-variant shrink-0">
+                  {totalCount} {totalCount === 1 ? "item" : "itens"}
+                </span>
+              ) : null}
+            </Link>
             {links.map((link) => {
               const isActive = pathname === link.href;
               return (

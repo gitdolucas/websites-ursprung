@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import AddToCartButton from "@/components/AddToCartButton";
 import Navbar from "@/components/Navbar";
 import { WHATSAPP_DISPLAY, whatsappUrl } from "@/lib/contact";
 import Footer from "@/components/Footer";
@@ -254,15 +255,15 @@ export default function Home() {
                   {coco.price}
                 </div>
               </div>
-              <button
-                type="button"
+              <AddToCartButton
+                productId="coco"
                 aria-label={`Adicionar ${coco.name} ao carrinho`}
                 className={`w-10 h-10 shrink-0 border border-on-surface/20 flex items-center justify-center rounded-lg hover:bg-on-surface hover:text-background transition-[background-color,color,border-color,transform] duration-300 ease-orchard hover:scale-105 active:scale-95 motion-reduce:hover:scale-100 motion-reduce:active:scale-100 ${fv}`}
               >
                 <span className="material-symbols-outlined text-sm" aria-hidden>
                   add_shopping_cart
                 </span>
-              </button>
+              </AddToCartButton>
             </div>
           </div>
         </div>

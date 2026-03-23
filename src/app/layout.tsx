@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
+import Providers from "@/components/Providers";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -47,7 +48,7 @@ export default function RootLayout({
           Ir para o conteúdo
         </a>
         <div className="grainy-overlay fixed inset-0 z-50" />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
