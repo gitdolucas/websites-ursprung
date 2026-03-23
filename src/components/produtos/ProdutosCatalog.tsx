@@ -40,7 +40,7 @@ export default function ProdutosCatalog({
   return (
     <>
       <section
-        className="relative z-[1] px-4 sm:px-8 mb-14 max-w-7xl mx-auto"
+        className="relative z-[10] px-4 sm:px-8 mb-14 max-w-7xl mx-auto"
         aria-label="Filtros do catálogo"
       >
         <div className="produtos-toolbar orchard-stagger-children flex flex-col gap-6 lg:flex-row lg:flex-wrap lg:items-center lg:gap-4">
@@ -88,7 +88,7 @@ export default function ProdutosCatalog({
         </div>
       </section>
 
-      <section className="relative z-[1] px-4 sm:px-8 max-w-7xl mx-auto pb-4">
+      <section className="relative z-[10] px-4 sm:px-8 max-w-7xl mx-auto pb-4">
         {visible.length === 0 ? (
           <p
             className="rounded-2xl border border-outline-variant/30 bg-surface-container-low/90 px-8 py-16 text-center font-body text-on-surface-variant text-lg"

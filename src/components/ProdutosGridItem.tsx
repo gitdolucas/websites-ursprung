@@ -70,7 +70,7 @@ export default function ProdutosGridItem({
               </span>
               <AddToCartButton
                 productId={p.id}
-                className="px-8 py-3 bg-secondary text-on-secondary font-bold rounded-md shrink-0 hover:bg-secondary-container hover:text-on-secondary-container transition-[background-color,color,transform,box-shadow] duration-300 ease-orchard hover:scale-[1.03] active:scale-[0.98] hover:shadow-[0_10px_32px_rgba(255,117,24,0.28)]"
+                className="relative z-10 min-h-[44px] px-8 py-3 bg-secondary text-on-secondary font-bold rounded-md shrink-0 hover:bg-secondary-container hover:text-on-secondary-container transition-[background-color,color,transform,box-shadow] duration-300 ease-orchard hover:scale-[1.03] active:scale-[0.98] hover:shadow-[0_10px_32px_rgba(255,117,24,0.28)]"
               >
                 ADICIONAR
               </AddToCartButton>
@@ -114,7 +114,7 @@ export default function ProdutosGridItem({
       </p>
       <AddToCartButton
         productId={p.id}
-        className="mt-auto py-3.5 border border-primary/35 text-primary font-headline text-sm font-bold rounded-xl hover:bg-primary hover:text-on-primary hover:border-transparent transition-[background-color,color,transform,box-shadow] duration-300 ease-orchard hover:scale-[1.02] hover:shadow-[0_12px_32px_-12px_rgba(221,255,176,0.25)] active:scale-[0.98] motion-reduce:hover:scale-100"
+        className="relative z-10 mt-auto min-h-[44px] py-3.5 border border-primary/35 text-primary font-headline text-sm font-bold rounded-xl hover:bg-primary hover:text-on-primary hover:border-transparent transition-[background-color,color,transform,box-shadow] duration-300 ease-orchard hover:scale-[1.02] hover:shadow-[0_12px_32px_-12px_rgba(221,255,176,0.25)] active:scale-[0.98] motion-reduce:hover:scale-100"
       >
         ADICIONAR
       </AddToCartButton>

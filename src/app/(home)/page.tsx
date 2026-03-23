@@ -25,9 +25,9 @@ export default function Home() {
       <main
         id="main-content"
         tabIndex={-1}
-        className="scroll-mt-28 pt-28 pb-20 px-4 md:px-8 max-w-7xl mx-auto outline-none"
+        className="home-atmosphere relative scroll-mt-28 pt-28 pb-20 px-4 md:px-8 max-w-7xl mx-auto outline-none"
       >
-        <div className="home-bento-stagger grid grid-cols-1 md:grid-cols-4 md:grid-rows-6 gap-4 min-h-[1400px]">
+        <div className="home-bento-stagger relative z-[1] grid grid-cols-1 md:grid-cols-4 md:grid-rows-6 gap-4 min-h-[1400px]">
           {/* Hero Section */}
           <PointerPanZoomShell
             className="md:col-span-3 md:row-span-3 bg-surface-container-highest rounded-[2rem] overflow-hidden relative group transition-[box-shadow] duration-500 ease-orchard hover:shadow-[0_24px_80px_-20px_rgba(221,255,176,0.08)] motion-reduce:hover:shadow-none"
@@ -43,10 +43,10 @@ export default function Home() {
             }
           >
             <div className="hero-content-stagger relative h-full flex flex-col justify-end p-8 md:p-12 z-10">
-              <span className="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-bold tracking-widest uppercase mb-4 w-fit transition-transform duration-300 ease-orchard group-hover:translate-y-[-2px] motion-reduce:group-hover:translate-y-0">
+              <span className="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-label font-semibold tracking-[0.22em] uppercase mb-4 w-fit transition-transform duration-300 ease-orchard group-hover:translate-y-[-2px] motion-reduce:group-hover:translate-y-0">
                 Authentic Experience
               </span>
-              <h1 className="text-pretty font-headline font-black text-5xl md:text-7xl lg:text-8xl leading-none tracking-tighter text-on-surface neon-glow mb-6 transition-[text-shadow,transform] duration-500 ease-orchard group-hover:translate-y-[-2px] motion-reduce:group-hover:translate-y-0">
+              <h1 className="home-hero-display text-pretty font-headline font-semibold text-5xl md:text-7xl lg:text-8xl leading-[0.92] tracking-[-0.02em] md:tracking-[-0.03em] text-on-surface mb-6 transition-[text-shadow,transform] duration-500 ease-orchard group-hover:translate-y-[-2px] motion-reduce:group-hover:translate-y-0">
                 O GOSTO
                 <br />
                 AUTÊNTICO
@@ -56,7 +56,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-4 items-center">
                 <Link
                   href="/produtos"
-                  className={`group/cta bg-primary text-on-primary px-8 py-4 font-headline font-bold uppercase tracking-tighter text-xl rounded-lg shadow-[0_10px_40px_rgba(221,255,176,0.2)] hover:bg-primary-fixed hover:text-on-primary-fixed transition-[background-color,color,transform,box-shadow] duration-300 ease-orchard hover:scale-[1.02] hover:shadow-[0_14px_48px_rgba(161,254,0,0.32)] active:scale-[0.98] motion-reduce:hover:scale-100 motion-reduce:active:scale-100 flex items-center gap-3 ${fvInverse}`}
+                  className={`home-cta-shimmer group/cta bg-primary text-on-primary px-8 py-4 font-headline font-bold uppercase tracking-tight text-xl rounded-lg shadow-[0_10px_40px_rgba(221,255,176,0.2)] hover:bg-primary-fixed hover:text-on-primary-fixed transition-[background-color,color,transform] duration-300 ease-orchard hover:scale-[1.02] active:scale-[0.98] motion-reduce:hover:scale-100 motion-reduce:active:scale-100 motion-reduce:animate-none flex items-center gap-3 ${fvInverse}`}
                 >
                   Explorar Sabores
                   <span
@@ -81,20 +81,20 @@ export default function Home() {
                   auto_awesome
                 </span>
               </div>
-              <h2 className="text-pretty font-headline font-black text-4xl uppercase tracking-tighter leading-none mb-6">
+              <h2 className="text-pretty font-headline font-semibold text-4xl uppercase tracking-tight leading-none mb-6">
                 ESSÊNCIA ARTESANAL
               </h2>
-              <p className="text-on-surface-variant leading-relaxed text-lg">
+              <p className="font-body text-on-surface-variant leading-relaxed text-lg">
                 Unimos a tradição do campo com a pulsação urbana. Cada garrafa é
                 um manifesto de sabor, destilada para quem não aceita o comum.
               </p>
             </div>
             <div className="mt-8 pt-8 border-t border-outline-variant/20">
               <div className="flex items-center gap-4">
-                <div className="text-3xl font-headline font-black text-secondary tabular-nums">
+                <div className="text-3xl font-headline font-semibold text-secondary tabular-nums">
                   01
                 </div>
-                <div className="text-xs font-bold uppercase tracking-widest opacity-60">
+                <div className="text-xs font-label font-semibold uppercase tracking-[0.2em] opacity-60">
                   Pureza Máxima
                 </div>
               </div>
@@ -111,10 +111,10 @@ export default function Home() {
           >
             <div className="relative z-10 h-full p-8 flex flex-col justify-between min-w-0">
               <div>
-                <h3 className="text-pretty font-headline font-black text-3xl uppercase tracking-tighter">
+                <h3 className="text-pretty font-headline font-semibold text-3xl uppercase tracking-tight">
                   Maracujá
                 </h3>
-                <p className="text-sm opacity-70">Tropical &amp; Intenso</p>
+                <p className="font-body text-sm opacity-70">Tropical &amp; Intenso</p>
               </div>
               <div className="flex justify-between items-end gap-3">
                 <div className="text-2xl font-headline font-bold tabular-nums min-w-0">
@@ -143,16 +143,16 @@ export default function Home() {
           >
             <div className="relative z-10 h-full p-8 flex flex-col justify-between min-w-0">
               <div className="max-w-[60%] min-w-0 [text-shadow:0_2px_20px_rgba(14,15,3,0.85),0_1px_3px_rgba(14,15,3,0.9)]">
-                <h3 className="text-pretty font-headline font-black text-4xl uppercase tracking-tighter mb-2">
+                <h3 className="text-pretty font-headline font-semibold text-4xl uppercase tracking-tight mb-2">
                   Clássico Limão
                 </h3>
-                <p className="text-on-surface-variant break-words">
+                <p className="font-body text-on-surface-variant break-words leading-relaxed">
                   A receita original elevada ao nível digital. Ácido,
                   refrescante e letalmente saboroso.
                 </p>
               </div>
               <div className="flex justify-between items-center gap-3">
-                <div className="text-3xl font-headline font-black text-primary tabular-nums [text-shadow:0_2px_18px_rgba(14,15,3,0.8)] min-w-0">
+                <div className="text-3xl font-headline font-bold text-primary tabular-nums [text-shadow:0_2px_18px_rgba(14,15,3,0.8)] min-w-0">
                   {limao.price}
                 </div>
                 <button
@@ -187,10 +187,10 @@ export default function Home() {
               >
                 chat
               </span>
-              <span className="font-headline font-bold tracking-tighter">
+              <span className="font-headline font-bold tracking-tight">
                 {WHATSAPP_DISPLAY}
               </span>
-              <span className="text-[10px] uppercase font-black tracking-widest opacity-80">
+              <span className="text-[10px] font-label font-semibold uppercase tracking-[0.2em] opacity-80">
                 WhatsApp Direto
               </span>
             </div>
@@ -201,11 +201,11 @@ export default function Home() {
             <div className="flex-1 min-w-0">
               <h3
                 id="home-newsletter-heading"
-                className="text-pretty font-headline font-bold text-xl uppercase mb-2"
+                className="text-pretty font-headline font-semibold text-xl uppercase tracking-tight mb-2"
               >
                 News do Orchard
               </h3>
-              <p className="text-xs opacity-60">
+              <p className="font-body text-xs opacity-60 leading-relaxed">
                 Receba drops exclusivos e novos sabores.
               </p>
             </div>
@@ -220,7 +220,7 @@ export default function Home() {
               <input
                 id={NEWSLETTER_EMAIL_ID}
                 name="newsletter-email"
-                className={`bg-surface-container border-none rounded-lg flex-1 min-w-0 text-sm focus:ring-1 focus:ring-primary placeholder:opacity-30 font-headline uppercase font-bold tracking-tighter px-4 py-2 transition-[background-color,box-shadow] duration-300 ease-orchard ${fv}`}
+                className={`bg-surface-container border-none rounded-lg flex-1 min-w-0 text-sm focus:ring-1 focus:ring-primary placeholder:opacity-30 font-body font-medium tracking-normal normal-case px-4 py-2 transition-[background-color,box-shadow] duration-300 ease-orchard ${fv}`}
                 placeholder="nome@exemplo.com…"
                 type="email"
                 autoComplete="email"
@@ -230,7 +230,7 @@ export default function Home() {
               <button
                 type="button"
                 aria-label="Inscrever-se na newsletter"
-                className={`shrink-0 bg-on-surface text-background px-6 rounded-lg font-headline font-bold text-sm uppercase transition-[background-color,transform,color] duration-300 ease-orchard hover:bg-primary hover:text-on-primary active:scale-[0.97] motion-reduce:hover:scale-100 motion-reduce:active:scale-100 ${fv}`}
+                className={`shrink-0 bg-on-surface text-background px-6 rounded-lg font-headline font-bold text-sm uppercase tracking-tight transition-[background-color,transform,color] duration-300 ease-orchard hover:bg-primary hover:text-on-primary active:scale-[0.97] motion-reduce:hover:scale-100 motion-reduce:active:scale-100 ${fv}`}
               >
                 Assinar
               </button>
@@ -248,7 +248,7 @@ export default function Home() {
             />
             <div className="relative h-full px-8 flex items-center justify-between gap-3 min-w-0">
               <div className="min-w-0">
-                <h3 className="text-pretty font-headline font-black text-2xl uppercase tracking-tighter">
+                <h3 className="text-pretty font-headline font-semibold text-2xl uppercase tracking-tight">
                   {coco.name}
                 </h3>
                 <div className="text-xl font-headline font-bold text-secondary tabular-nums">

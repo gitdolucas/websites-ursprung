@@ -146,32 +146,43 @@ export default function CheckoutCartSection() {
         )}
 
         {hasItems ? (
-          <div className="mt-8 space-y-4">
-            <div className="rounded-2xl border border-outline-variant/25 bg-surface-container-low/80 px-5 py-5 sm:px-6">
-              <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-outline-variant/20 pb-4">
-                <span className="font-headline text-sm font-bold uppercase tracking-widest text-on-surface-variant">
-                  Total (produtos)
-                </span>
-                <span className="font-headline text-2xl font-black tabular-nums text-primary">
-                  {formatBRL(cartTotal)}
-                </span>
+          <>
+            <div className="mt-6 flex justify-center sm:justify-start">
+              <Link
+                href="/produtos"
+                className={`${fv} font-headline font-bold text-sm uppercase tracking-widest text-primary hover:text-secondary transition-colors inline-flex items-center gap-1`}
+              >
+                Ver catálogo completo
+                <span aria-hidden>→</span>
+              </Link>
+            </div>
+            <div className="mt-8 space-y-4">
+              <div className="rounded-2xl border border-outline-variant/25 bg-surface-container-low/80 px-5 py-5 sm:px-6">
+                <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-outline-variant/20 pb-4">
+                  <span className="font-headline text-sm font-bold uppercase tracking-widest text-on-surface-variant">
+                    Total (produtos)
+                  </span>
+                  <span className="font-headline text-2xl font-black tabular-nums text-primary">
+                    {formatBRL(cartTotal)}
+                  </span>
+                </div>
+                <p className="mt-4 text-sm font-body leading-relaxed text-on-surface-variant">
+                  <span className="font-headline font-bold text-secondary">
+                    Frete não incluso.
+                  </span>{" "}
+                  O valor do envio não entra neste total — combinamos separadamente
+                  no WhatsApp conforme a região.
+                </p>
               </div>
-              <p className="mt-4 text-sm font-body leading-relaxed text-on-surface-variant">
-                <span className="font-headline font-bold text-secondary">
-                  Frete não incluso.
+              <p className="text-sm text-on-surface-variant font-body">
+                <span className="font-headline font-bold text-on-surface">
+                  {totalCount}
                 </span>{" "}
-                O valor do envio não entra neste total — combinamos separadamente
-                no WhatsApp conforme a região.
+                {totalCount === 1 ? "item" : "itens"} no pedido. Preços seguem o
+                catálogo; qualquer ajuste final confirmamos no atendimento.
               </p>
             </div>
-            <p className="text-sm text-on-surface-variant font-body">
-              <span className="font-headline font-bold text-on-surface">
-                {totalCount}
-              </span>{" "}
-              {totalCount === 1 ? "item" : "itens"} no pedido. Preços seguem o
-              catálogo; qualquer ajuste final confirmamos no atendimento.
-            </p>
-          </div>
+          </>
         ) : null}
       </section>
 
