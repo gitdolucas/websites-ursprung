@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full mt-20 relative overflow-hidden bg-background grid grid-cols-1 md:grid-cols-4 gap-0 border-t border-outline-variant/15 p-12 max-w-full">
-      <div className="md:col-span-1 flex flex-col gap-4">
+      <div className="order-last mt-8 md:order-none md:mt-0 md:col-span-1 flex flex-col gap-4">
         <div className="text-secondary font-black text-2xl font-headline uppercase tracking-widest">
           URSPRUNG
         </div>
