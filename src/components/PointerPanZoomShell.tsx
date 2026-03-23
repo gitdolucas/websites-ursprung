@@ -5,6 +5,7 @@ import {
   useCallback,
   useEffect,
   useRef,
+  type CSSProperties,
   type PointerEvent,
   type ReactNode,
 } from "react";
@@ -20,6 +21,7 @@ export type PointerPanZoomShellProps = {
   sizes: string;
   imageClassName?: string;
   className: string;
+  style?: CSSProperties;
   /** Rendered above the image, below `children` (e.g. hero gradient). */
   overlay?: ReactNode;
   priority?: boolean;
@@ -35,6 +37,7 @@ export default function PointerPanZoomShell({
   sizes,
   imageClassName = "",
   className,
+  style,
   overlay,
   priority,
   zoom = DEFAULT_ZOOM,
@@ -147,6 +150,7 @@ export default function PointerPanZoomShell({
     <div
       ref={cardRef}
       className={className}
+      style={style}
       onPointerMove={onPointerMove}
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}

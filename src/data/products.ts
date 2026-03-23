@@ -23,11 +23,14 @@ export type Product = {
   tags?: string[];
   /** Shown above title on large bento (melancia). */
   editionLabel?: string;
+  /** sRGB flavor accent for card hovers (packaging-aligned). */
+  accentHex?: string;
 };
 
 export const products: Record<ProductId, Product> = {
   maracuja: {
     id: "maracuja",
+    accentHex: "#C87522",
     name: "Passionfrucht | Maracujá",
     price: "R$ 35,00",
     description:
@@ -39,6 +42,7 @@ export const products: Record<ProductId, Product> = {
   },
   limao: {
     id: "limao",
+    accentHex: "#D4A34D",
     name: "Zitrone | Limão",
     price: "R$ 25,00",
     description:
@@ -50,58 +54,57 @@ export const products: Record<ProductId, Product> = {
   },
   coco: {
     id: "coco",
-    name: "Coco Cyber",
+    accentHex: "#EFEBE0",
+    name: "Kokos | Coco",
     price: "R$ 32,00",
     description:
       "Textura aveludada com leite de coco artesanal e infusão de fava tonka.",
     category: "tropical",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDNEetgRFAzcGgo_lmY7LT9FRJZZlDRvBVSdYnjqUpHkXh17koTeA9HqrU1kGFMtd66lTT6DngyC0iKr60h3RJB_bH0weUeYIpSLpOOSLi4n16_eoe3_-luWe2B4xDUbPDD-5LTMihYvY8-ViPsqTjjZZSAiRpfft2zvt6wRwaNDuiJYWX_XXQ6rRVKYnKJb-XiZAukiCbO5PDtqg7TEaJm4QAUO9O_NkSXyAvmc8GowxWsMdqDSrEwv9fnafb86qy8iDrBkP1yaHtz",
+    image: "/products/kokos.png",
     alt: "Batida de coco cremosa com coco ralado",
   },
   melancia: {
     id: "melancia",
-    name: "Melancia Neon",
+    accentHex: "#D65D5B",
+    name: "Wassermelone | Melancia",
     price: "R$ 38,50",
     description:
       "A refrescância máxima da melancia com um kick de pimenta rosa e cachaça branca.",
     category: "limited",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDaWfhlu52YajybuS_b7LEl3lj7847XTsgq9RW1lJkIjU47l565D_tFDiqVW5HHvP-L_qiSeBaruiJaVz4ERdHKK6XpwFRDck1U96hNBZ3PZjh2YrEXhtWzKMgZhNfQumilv5FSeGjCBsOsUbcfXeSa8gMtlthe2jMJtD7Zif-6rQU_vhlp8E1yKEvvH5a7DdBKInWrVfyaFQWalfWu0UnPphsguo9nUXint5ItRjA8mePb90fyjg_rHI0oHHT2Wymw0uxxb-NaGLaD",
+    image: "/products/wassermelone.png",
     alt: "Drink vermelho vibrante com frutas vermelhas",
     editionLabel: "Edição Limitada",
   },
   frutas_vermelhas: {
     id: "frutas_vermelhas",
-    name: "Frutas Vermelhas",
+    accentHex: "#5E1A3D",
+    name: "Beerenmischung | Frutas Vermelhas",
     price: "R$ 36,00",
     description:
       "Mix de amora, framboesa e morango com cachaça prata de Minas.",
     category: "tropical",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDsuaETRAqHVXb4PcJx1JfH-x4jWU09uEfnMpZWaaS1RxnUNlOa5rzQe5OWfKewQ8LR1nP4YkwbwR9RIOoZeawDNeTMJNZaEdNn3erUE1L5Sn3USP_D-6eHvWgwNG39yNgMPFUu3Aahveg7vvxLPzKG2orTc9Dx0NxR8GNeGX110P9U0FFlnMXz00cQxhFnrGVDs4gqP4XMt9U8qbc0VY9xINy1dzzsrae6lDnvlbLovL3ugRO9TiSalHyhwkc6suhoLx2NEOUucwkS",
+    image: "/products/beerenmischung.png",
     alt: "Batida roxa intensa de frutas vermelhas",
   },
   abacaxi: {
     id: "abacaxi",
-    name: "Abacaxi Cyber",
+    accentHex: "#D9A426",
+    name: "Ananas | Abacaxi",
     price: "R$ 29,00",
     description:
       "Abacaxi pérola com hortelã fresca e xarope artesanal de gengibre.",
     category: "tropical",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBeBlQ1fY82Cg9tYWiL-ANhGQgaPVq1XzFP8n4TROQsvJsCE0C_Gg8mBBoCdwb9W0JnnDhiPLcnqkRPTAKLL3ELRsozdb43c_KqugGiwm-D9bciSbI-7gV82Gyhk9wKiIEj7bY_-TX1_p_-dcwWkr2sqMBuEhPq4Yx4oMufwS5hVY-q-mdPGQ8mdFjhwgIbN_BYCgZTegauBOwUcqzbTq1XeJjPekQso5kYNdbH1Y55OQ7Q-Si1ULBLUhJVt6yebsbUnBiYNCSHtETY",
+    image: "/products/ananas.png",
     alt: "Batida amarela de abacaxi com hortelã",
   },
   kit: {
     id: "kit",
-    name: "Kit Degustação",
-    price: "R$ 85,00",
+    name: "Degustationsset | Kit Degustação",
+    price: "R$ 55,00",
     description:
       "Três mini garrafas (200ml) com nossos sabores mais icônicos.",
     category: "kit",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBLRu9vqmbyKkGE6eObUlEtcu8sNETeRGUb0x0ze3tjc4GeeY7fpZGyLasD23WvRq_kOK0hXz-HLPRf1oIRXB-f2r4BWOs3kFTsrs6-uXVcKasSm9G3U4dPevA77yd11CVZQDgk7qc7CQeuPsmKDaGor55TUvIme2dmepVZLE6KAVKddRe-839UIinnabZSee6Tz45tiiSWT_Je-LFmqs96U2IdntTCUarEsIBSnFbTMMi-znMuwdlyshGESiyPufBgeDl1HeRKXMRb",
+    image: "/products/kit.png",
     alt: "Kit de presente com garrafas artesanais",
   },
 };

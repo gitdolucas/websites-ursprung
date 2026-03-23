@@ -7,8 +7,36 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Sobre",
   description:
-    "A história da Ursprung: tradição artesanal, ingredientes naturais e o sabor autêntico das batidas brasileiras.",
+    "Luiz Guilherme, fundador da Ursprung: marido, pai, motociclista Gárgula e mestre cachaceiro — a origem por trás das batidas artesanais.",
 };
+
+const facets = [
+  {
+    icon: "favorite",
+    title: "Marido",
+    text: "Parceiro de jornada — na mesa, na estrada e em cada decisão que molda a marca.",
+  },
+  {
+    icon: "child_care",
+    title: "Pai",
+    text: "Pai de uma menina; a leveza e a responsabilidade de educar lembram por que o produto precisa ser verdadeiro.",
+  },
+  {
+    icon: "two_wheeler",
+    title: "Gárgula",
+    text: "Motociclista Gárgula: estrada, vento e a mesma teimosia boa de quem não aceita meio termo no que faz.",
+  },
+  {
+    icon: "local_bar",
+    title: "Mestre cachaceiro",
+    text: "A mão e o paladar por trás da cachaça e das batidas Ursprung — receita, tempo e respeito ao ofício.",
+  },
+] as const;
+
+const fv =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-container";
+
+const PROFILE_IMAGE_SRC = "/images/owner.png";
 
 export default function Sobre() {
   return (
@@ -18,234 +46,252 @@ export default function Sobre() {
       <main
         id="main-content"
         tabIndex={-1}
-        className="scroll-mt-32 pt-32 pb-20 outline-none"
+        className="sobre-atmosphere relative scroll-mt-32 pt-32 pb-24 outline-none"
       >
-        {/* Hero Section */}
-        <section className="px-6 py-12 md:py-24 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <div className="orchard-stagger-children md:w-1/2 z-10">
-            <span className="font-label text-primary-container font-bold tracking-[0.3em] uppercase text-xs mb-6 block neon-glow">
-              A TRADIÇÃO VIVA
-            </span>
-            <h1 className="font-headline font-black text-5xl md:text-8xl tracking-tighter leading-none mb-8 uppercase text-on-surface">
-              O limão na sua <br />
-              <span className="text-primary-container italic">origem</span>
-            </h1>
-            <p className="text-xl text-on-surface-variant max-w-lg mb-12 leading-relaxed font-body">
-              Mais que uma bebida, um resgate. Ursprung nasce do desejo de
-              preservar a receita que atravessou décadas, celebrando a
-              simplicidade do feito à mão.
+        {/* Hero — editorial masthead */}
+        <section className="relative z-[1] px-5 md:px-10 max-w-7xl mx-auto pb-16 md:pb-24">
+          <div className="orchard-stagger-children grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end">
+            <div className="lg:col-span-7">
+              <p className="font-label text-secondary text-[0.7rem] md:text-xs font-semibold tracking-[0.28em] uppercase mb-6">
+                A pessoa por trás da origem
+              </p>
+              <h1 className="font-headline font-semibold text-on-surface text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] leading-[0.95] tracking-[-0.03em] text-pretty mb-6">
+                Luiz Guilherme
+              </h1>
+              <div className="sobre-editorial-rule mb-8" aria-hidden />
+              <p className="font-body text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-2xl mb-4">
+                É o dono da{" "}
+                <span className="text-primary-container font-medium">
+                  Ursprung
+                </span>
+                : marido, pai de uma menina, motociclista{" "}
+                <span className="text-on-surface italic">Gárgula</span> e
+                mestre cachaceiro — o mestre por trás de cada garrafa que sai
+                do alambique para a sua mesa.
+              </p>
+              <p className="font-body text-base md:text-lg text-on-surface-variant/90 leading-relaxed max-w-2xl mb-10">
+                Mais que uma bebida, um resgate de receita e de encontro.
+                Ursprung é feito à mão, com calma e com coração — do jeito que
+                se faz para quem ama.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/produtos"
+                  className={`inline-flex items-center gap-2 bg-primary-container text-on-primary-container font-headline font-semibold py-4 px-8 rounded-xl uppercase tracking-[0.12em] text-sm md:text-base shadow-[0_0_28px_rgba(161,254,0,0.18)] hover:bg-primary-fixed hover:text-on-primary-fixed transition-[background-color,color,box-shadow] duration-300 ease-orchard ${fv}`}
+                >
+                  Ver batidas
+                  <span className="material-symbols-outlined text-xl" aria-hidden>
+                    arrow_forward
+                  </span>
+                </Link>
+                <Link
+                  href="/contato"
+                  className={`inline-flex items-center gap-2 glass-card text-on-surface font-headline font-semibold py-4 px-8 rounded-xl uppercase tracking-[0.12em] text-sm md:text-base border border-outline-variant/40 hover:border-primary-container/45 transition-[border-color,background-color] duration-300 ease-orchard ${fv}`}
+                >
+                  Falar com a gente
+                </Link>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 relative">
+              <div className="sobre-frame-float relative mx-auto max-w-md lg:max-w-none">
+                <div
+                  className="absolute -inset-3 rounded-[2rem] opacity-60 blur-xl bg-gradient-to-br from-secondary/25 via-primary-container/15 to-transparent -z-10"
+                  aria-hidden
+                />
+                <div className="relative rounded-[2rem] border border-outline-variant/35 bg-surface-container-highest/80 backdrop-blur-sm shadow-[0_28px_90px_-30px_rgba(0,0,0,0.55)] overflow-hidden">
+                  <div
+                    className="absolute top-0 right-0 w-40 h-40 rounded-full bg-primary-container/8 blur-2xl pointer-events-none"
+                    aria-hidden
+                  />
+                  <div className="relative z-[1] p-6 md:p-8 pb-4 md:pb-5">
+                    <p className="font-label text-on-surface-variant text-[0.65rem] tracking-[0.35em] uppercase mb-4">
+                      Retrato
+                    </p>
+                    <div className="relative aspect-[4/5] w-full max-h-[min(420px,55vh)] mx-auto rounded-xl overflow-hidden border border-outline-variant/30">
+                      <Image
+                        src={PROFILE_IMAGE_SRC}
+                        alt="Luiz Guilherme, fundador da Ursprung"
+                        fill
+                        className="object-cover object-center brightness-90 contrast-110"
+                        sizes="(max-width: 1024px) 100vw, 400px"
+                        priority
+                      />
+                    </div>
+                  </div>
+                  <div className="relative z-[1] px-6 md:px-8 pb-8 md:pb-10 pt-2 border-t border-outline-variant/25">
+                    <p className="font-body text-on-surface-variant text-sm md:text-base leading-relaxed italic border-l-2 border-secondary/70 pl-5">
+                      &ldquo;Tradição viva não é repetir o passado — é honrar o que
+                      veio antes e colocar alma no que se faz hoje.&rdquo;
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Facets — asymmetric strip */}
+        <section className="relative z-[1] px-5 md:px-10 max-w-7xl mx-auto py-12 md:py-20">
+          <div className="orchard-stagger-children flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12 md:mb-14">
+            <div>
+              <h2 className="font-headline font-semibold text-3xl md:text-4xl text-on-surface tracking-tight">
+                Quatro vidas na mesma história
+              </h2>
+              <p className="font-body text-on-surface-variant mt-3 max-w-xl leading-relaxed">
+                Quem conhece a Ursprung conhece o sabor; quem conhece Luiz
+                entende de onde vem a obstinação por qualidade.
+              </p>
+            </div>
+            <p className="font-label text-primary-container text-xs tracking-[0.3em] uppercase shrink-0">
+              Dono · Família · Estrada · Ofício
             </p>
-            <div className="flex gap-4">
+          </div>
+          <ul className="orchard-stagger-children grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 list-none p-0 m-0">
+            {facets.map((facet, i) => (
+              <li
+                key={facet.title}
+                className={`glass-card rounded-2xl p-8 md:p-9 border-t-2 transition-[transform,box-shadow,border-color] duration-500 ease-orchard hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 ${
+                  i % 2 === 0 ? "border-secondary/80" : "border-primary-container/50"
+                }`}
+              >
+                <span
+                  className="material-symbols-outlined text-3xl text-primary-container mb-5 block"
+                  aria-hidden
+                >
+                  {facet.icon}
+                </span>
+                <h3 className="font-headline font-semibold text-xl md:text-2xl text-on-surface mb-3 tracking-tight">
+                  {facet.title}
+                </h3>
+                <p className="font-body text-on-surface-variant text-[0.95rem] leading-relaxed">
+                  {facet.text}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Pull quote */}
+        <section
+          className="relative z-[1] py-16 md:py-20 lg:py-24 border-y border-outline-variant/25 bg-surface-container-low/40"
+          aria-labelledby="sobre-citacao"
+        >
+          <div className="max-w-4xl mx-auto px-5 md:px-10 text-center">
+            <p
+              id="sobre-citacao"
+              className="font-headline font-medium text-2xl md:text-3xl lg:text-4xl text-on-surface leading-snug tracking-tight text-balance"
+            >
+              O limão na sua origem — e o cuidado de quem vive tantas vidas
+              antes de assinar cada lote.
+            </p>
+          </div>
+        </section>
+
+        {/* Narrative + image */}
+        <section className="relative z-[1] px-5 md:px-10 max-w-7xl mx-auto py-16 md:py-24">
+          <div className="orchard-stagger-children grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-1 h-32 bg-gradient-to-b from-secondary to-primary-container rounded-full opacity-80 hidden md:block" />
+              <figure className="relative rounded-[2rem] overflow-hidden border border-outline-variant/30 shadow-[0_32px_100px_-40px_rgba(161,254,0,0.15)] rotate-[-1deg] hover:rotate-0 transition-transform duration-700 ease-orchard motion-reduce:rotate-0 motion-reduce:hover:rotate-0">
+                <Image
+                  src="/images/o-que-sai-do-alambique.jpeg"
+                  alt="Garrafas Ursprung Zitrone em fileiras sobre mesa de vime reflexiva, rótulos brancos e líquido cítrico"
+                  width={900}
+                  height={1200}
+                  className="w-full h-[min(72vh,520px)] object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/85 to-transparent pt-24 pb-6 px-6">
+                  <p className="font-label text-[0.65rem] tracking-[0.25em] uppercase text-on-surface-variant">
+                    O que sai do alambique
+                  </p>
+                </figcaption>
+              </figure>
+            </div>
+            <div className="order-1 lg:order-2">
+              <h2 className="font-headline font-semibold text-3xl md:text-4xl text-on-surface mb-6 tracking-tight">
+                Herança de cozinha, alma de ofício
+              </h2>
+              <p className="font-body text-on-surface-variant text-lg leading-relaxed mb-5">
+                A história da Ursprung não começa em uma linha industrial, mas
+                em conversa de família e limão espremido na hora. Luiz
+                Guilherme leva essa memória para o alambique: cachaça honesta,
+                fruta de verdade e o mesmo respeito de quem faz para os seus.
+              </p>
+              <p className="font-body text-on-surface-variant leading-relaxed mb-8">
+                Cada garrafa é um convite ao brinde — entre quem se ama, como
+                nas primeiras reuniões de amigos que deram origem à receita.
+              </p>
+              <ul className="space-y-4 font-body text-on-surface-variant">
+                <li className="flex gap-3 items-start">
+                  <span
+                    className="material-symbols-outlined text-secondary shrink-0 text-xl mt-0.5"
+                    aria-hidden
+                  >
+                    eco
+                  </span>
+                  <span>
+                    <strong className="text-on-surface font-semibold">
+                      Ingredientes diretos.
+                    </strong>{" "}
+                    O que a natureza dá, sem atalho de laboratório.
+                  </span>
+                </li>
+                <li className="flex gap-3 items-start">
+                  <span
+                    className="material-symbols-outlined text-secondary shrink-0 text-xl mt-0.5"
+                    aria-hidden
+                  >
+                    pan_tool
+                  </span>
+                  <span>
+                    <strong className="text-on-surface font-semibold">
+                      Feito à mão.
+                    </strong>{" "}
+                    O cuidado de quem assina o próprio trabalho.
+                  </span>
+                </li>
+                <li className="flex gap-3 items-start">
+                  <span
+                    className="material-symbols-outlined text-secondary shrink-0 text-xl mt-0.5"
+                    aria-hidden
+                  >
+                    groups
+                  </span>
+                  <span>
+                    <strong className="text-on-surface font-semibold">
+                      Para dividir.
+                    </strong>{" "}
+                    O propósito é sempre o encontro.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Closing CTA */}
+        <section className="relative z-[1] px-5 md:px-10 max-w-7xl mx-auto pt-8 pb-4">
+          <div className="relative overflow-hidden rounded-[2rem] border border-primary-container/25 bg-surface-container-high p-10 md:p-16 lg:p-20 text-center">
+            <div
+              className="absolute inset-0 bg-gradient-to-br from-primary-container/[0.07] via-transparent to-secondary/[0.06] pointer-events-none"
+              aria-hidden
+            />
+            <div className="relative z-[1] orchard-stagger-children max-w-2xl mx-auto flex flex-col items-center">
+              <h2 className="font-headline font-semibold text-3xl md:text-5xl text-on-surface tracking-tight text-balance mb-6">
+                Leve a origem para a sua mesa
+              </h2>
+              <p className="font-body text-on-surface-variant text-lg leading-relaxed mb-10">
+                Experimente o sabor que Luiz Guilherme coloca em cada batida — e
+                faça o próximo brinde com a Ursprung.
+              </p>
               <Link
                 href="/produtos"
-                className="bg-primary-container text-on-primary-container font-headline font-black py-5 px-10 rounded-xl uppercase tracking-tighter text-xl hover:bg-primary-fixed hover:text-on-primary-fixed hover:scale-[1.02] active:scale-[0.98] transition-[background-color,color,transform,box-shadow] duration-300 ease-orchard shadow-[0_0_30px_rgba(161,254,0,0.2)] hover:shadow-[0_0_40px_rgba(161,254,0,0.35)]"
+                className={`inline-flex items-center gap-2 bg-primary-container text-on-primary-container font-headline font-semibold py-5 px-12 rounded-xl uppercase tracking-[0.14em] text-sm md:text-base shadow-[0_20px_50px_rgba(161,254,0,0.25)] hover:bg-primary-fixed hover:text-on-primary-fixed transition-[background-color,color,box-shadow] duration-300 ease-orchard ${fv}`}
               >
-                Descubra Nossas Batidas
+                Explorar loja
               </Link>
-            </div>
-          </div>
-          <div className="orchard-stagger-children md:w-1/2 relative">
-            <div className="absolute -top-10 -right-10 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl -z-10" />
-            <div className="relative rounded-[2rem] overflow-hidden border-2 border-outline-variant/30 group transition-[box-shadow] duration-500 ease-orchard hover:shadow-[0_24px_80px_-20px_rgba(161,254,0,0.12)]">
-              <Image
-                className="w-full h-[600px] object-cover mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-[1.02] transition-[filter,transform] duration-[900ms] ease-orchard"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDb9WjJq6dZBC1FPLcWARcoOdeGjRxsFTAAxqkDqulEtjS9jMhR3UifB1ARxVLpxV6mWORa_SRvprzRittCHnDPMlLPjaBNoavUsW4Ld-I5-6tfM_LNYQt1ALUxVVcN-M7ZQC82nSnyDV_q24mh-4XJb-SBRcc7mRRUaJtnDvxAr6iMCl9KT0g8lUccefjj5Dw6ImPYdMNp1bxgoWsDDr8mz59ZgeBM3ZJkgEIKjo04biW2lp_Pi851J4Y8OEkkcqb4GKdTRFle9xh"
-                alt="Artisanal lime caipirinha preparation"
-                width={800}
-                height={600}
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-            {/* Floating Element */}
-            <div className="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl max-w-[240px] border-l-4 border-primary-container hidden md:block transition-[transform,box-shadow] duration-500 ease-orchard hover:-translate-y-1">
-              <p className="font-headline text-[10px] font-black text-primary-container mb-3 tracking-[0.2em] uppercase">
-                INGREDIENTE SELECIONADO
-              </p>
-              <p className="font-headline text-sm italic text-on-surface leading-tight">
-                &ldquo;Limão espremido na hora, cachaça de alambique e segredos
-                guardados.&rdquo;
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Narrative Bento Grid */}
-        <section className="px-6 py-20 max-w-7xl mx-auto">
-          <div className="orchard-stagger-children grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[800px]">
-            {/* A Origem */}
-            <div className="md:col-span-2 md:row-span-2 glass-card rounded-[2rem] p-12 md:p-16 flex flex-col justify-end relative overflow-hidden group transition-[transform,background-color] duration-500 ease-orchard hover:-translate-y-0.5">
-              <div className="absolute top-0 right-0 p-12 opacity-5 text-primary-container">
-                <span className="material-symbols-outlined text-[180px]">
-                  history_edu
-                </span>
-              </div>
-              <div className="relative z-10">
-                <div className="text-secondary font-headline font-black text-3xl mb-4">
-                  01
-                </div>
-                <h2 className="font-headline font-black text-4xl md:text-5xl uppercase tracking-tighter mb-8 leading-none">
-                  Uma herança transmitida de gerações.
-                </h2>
-                <p className="text-lg leading-relaxed text-on-surface-variant font-body">
-                  Nossa história não começa em uma fábrica, mas em uma cozinha
-                  familiar. A receita de Ursprung foi refinada ao longo de
-                  muitos anos, passando de mãos em mãos, mantendo a
-                  simplicidade e a alma em cada gota.
-                </p>
-                <div className="flex items-center gap-4 mt-10">
-                  <div className="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant/30">
-                    <span className="material-symbols-outlined text-primary-container text-xl">
-                      history
-                    </span>
-                  </div>
-                  <p className="font-headline font-bold text-xs uppercase tracking-widest opacity-60">
-                    Desde as primeiras reuniões de amigos.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Visual Hook */}
-            <div className="md:col-span-2 md:row-span-1 bg-surface-container-highest rounded-[2rem] overflow-hidden relative group transition-[transform,box-shadow] duration-500 ease-orchard hover:-translate-y-0.5">
-              <Image
-                className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 transition-[filter,opacity,transform] duration-[900ms] ease-orchard group-hover:scale-[1.03]"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP9pDfmtGMOyzjpRyDwh5SRY1_MwIbkf-UFOOKXOTSjXxRkvKsmu-n6PS2qAlxB2_tFByI6XviO7uq_YKENC-q94RtpPuOWcQNGs6zrqgBF6xxkh5saB0AqWy0-KhY5qCNFJZRFrDlhKl3DichqbZuzf-AlTxGn8uQ8XS2VyhSAFOOw7KX9OdDSva3BHkp6uavtOSGInCHsUS5WuBKspMJUV_BnMSc2CzpcJWFXZPPA9Yl6wOEhID1ctd4Z9Sa3k1x9mid_x1t_hfX"
-                alt="Handcrafted batida preparation process"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent flex items-end p-10">
-                <p className="text-on-surface font-headline font-black text-2xl uppercase tracking-tighter">
-                  Feito com calma, à mão e com o coração.
-                </p>
-              </div>
-            </div>
-
-            {/* Ingredientes */}
-            <div className="md:col-span-1 md:row-span-1 glass-card rounded-[2rem] p-8 flex flex-col justify-between border-t-4 border-secondary transition-[transform,box-shadow] duration-500 ease-orchard hover:-translate-y-0.5">
-              <span className="material-symbols-outlined text-secondary text-4xl">
-                restaurant_menu
-              </span>
-              <div>
-                <h3 className="font-headline font-black text-xl uppercase tracking-tighter mb-2">
-                  Paladar Inconfundível
-                </h3>
-                <p className="text-xs text-on-surface-variant font-body leading-relaxed">
-                  Sabor suave, levemente adocicado e profundamente aromático.
-                  Equilíbrio entre o cítrico e o calor.
-                </p>
-              </div>
-            </div>
-
-            {/* Compartilhada */}
-            <div className="md:col-span-1 md:row-span-1 glass-card rounded-[2rem] p-8 flex flex-col justify-between overflow-hidden relative transition-[transform,box-shadow] duration-500 ease-orchard hover:-translate-y-0.5">
-              <Image
-                className="absolute inset-0 w-full h-full object-cover opacity-20"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsy-c0dOaV3nfgpCTjJ6mXT-lORYE4FuPOenaLbAFWXuB9MrjBL9OUHbn3zbhkDp8JGJqO-NwyMcnZl1j9s5rzQmHXaNwLJWlyuTygLqPUhFmxvqBfLyQt7kbO8ijnpViFGaUdcOmBn6_mQZxjcpHM1zSs13tKLrf4B3MV8WtFnTyOvLmo0fH-WtXGvhxXZNZeFah87vAbx0NnC1Gh4QcJCGHqdvkd2ryVb9rVzOdjkMgxv2SbbN5Vv0zuduV8YqHWZoJurN-D2AP5"
-                alt="Friends sharing batidas"
-                fill
-                sizes="(max-width: 768px) 100vw, 25vw"
-              />
-              <div className="relative z-10 h-full flex flex-col justify-between">
-                <h3 className="font-headline font-black text-xl uppercase tracking-tighter">
-                  Compartilhada
-                </h3>
-                <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-primary-container border border-background" />
-                  <div className="w-8 h-8 rounded-full bg-secondary border border-background" />
-                  <div className="w-8 h-8 rounded-full bg-on-surface-variant border border-background flex items-center justify-center text-[10px] font-bold">
-                    +12
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Signature Section */}
-        <section className="py-32 bg-surface-container-low/30 relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[300px] font-headline font-black opacity-[0.02] select-none uppercase pointer-events-none">
-            ORIGEM
-          </div>
-          <div className="orchard-stagger-children max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h2 className="font-headline font-black text-4xl md:text-6xl tracking-tighter leading-none mb-10 uppercase text-on-surface">
-              Memória, origem e convivência: a essência engarrafada.
-            </h2>
-            <div className="w-24 h-2 bg-primary-container mx-auto mb-8" />
-            <p className="font-headline font-black text-primary-container tracking-[0.4em] uppercase text-sm">
-              Família Ursprung
-            </p>
-          </div>
-        </section>
-
-        {/* Pillars */}
-        <section className="px-6 py-24 max-w-7xl mx-auto">
-          <h2 className="font-headline font-black text-4xl text-center uppercase tracking-tighter mb-20">
-            Nossos Pilares
-          </h2>
-          <div className="orchard-stagger-children grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "eco",
-                title: "Simplicidade",
-                text: "Ingredientes honestos. Nada de químicos, apenas o que a natureza nos dá.",
-              },
-              {
-                icon: "pan_tool",
-                title: "Artesania",
-                text: "Cada garrafa é tratada com o cuidado de quem faz para os seus próprios.",
-              },
-              {
-                icon: "groups",
-                title: "União",
-                text: "O propósito final é sempre o brinde entre pessoas que se amam.",
-              },
-            ].map((pillar) => (
-              <div
-                key={pillar.title}
-                className="text-center group glass-card p-12 rounded-[2rem] border-b-4 border-transparent hover:border-primary-container transition-[transform,border-color,box-shadow] duration-500 ease-orchard hover:-translate-y-0.5"
-              >
-                <div className="w-20 h-20 bg-surface-container-highest rounded-2xl mx-auto flex items-center justify-center mb-8 border border-outline-variant/20 group-hover:rotate-12 transition-transform duration-500 ease-orchard">
-                  <span className="material-symbols-outlined text-primary-container text-4xl">
-                    {pillar.icon}
-                  </span>
-                </div>
-                <h4 className="font-headline font-black text-2xl uppercase tracking-tighter mb-4">
-                  {pillar.title}
-                </h4>
-                <p className="text-on-surface-variant font-body">
-                  {pillar.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="px-6 py-12">
-          <div className="max-w-7xl mx-auto bg-surface-container-high border-2 border-primary-container/20 rounded-[2rem] p-12 md:p-24 relative overflow-hidden flex flex-col items-center text-center transition-[border-color,box-shadow] duration-500 ease-orchard hover:border-primary-container/35 hover:shadow-[0_24px_80px_-24px_rgba(161,254,0,0.08)]">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-container/10 to-transparent transition-opacity duration-700 ease-orchard" />
-            <div className="absolute top-0 right-0 p-10 opacity-5">
-              <span className="material-symbols-outlined text-[300px]">
-                local_bar
-              </span>
-            </div>
-            <div className="orchard-stagger-children relative z-10 flex flex-col items-center text-center">
-            <h2 className="font-headline font-black text-5xl md:text-7xl text-on-surface mb-8 uppercase tracking-tighter leading-none">
-              Leve a origem <br />
-              para sua casa.
-            </h2>
-            <p className="text-on-surface-variant text-xl max-w-xl mb-12 relative z-10 font-body">
-              Experimente o sabor da nossa história. Uma garrafa de Ursprung é o
-              convite perfeito para o seu próximo encontro.
-            </p>
-            <Link
-              href="/produtos"
-              className="bg-primary-container text-on-primary-container font-headline font-black py-6 px-16 rounded-xl uppercase tracking-tighter text-2xl shadow-[0_20px_50px_rgba(161,254,0,0.3)] hover:bg-primary-fixed hover:text-on-primary-fixed hover:scale-[1.02] active:scale-[0.98] transition-[background-color,color,transform,box-shadow] duration-300 ease-orchard hover:shadow-[0_24px_60px_rgba(161,254,0,0.4)]"
-            >
-              Explorar Loja
-            </Link>
             </div>
           </div>
         </section>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { WHATSAPP_DISPLAY, whatsappUrl } from "@/lib/contact";
@@ -192,7 +191,7 @@ export default function Contato() {
                 Localização
               </h3>
               <p className="text-on-surface-variant text-sm leading-relaxed">
-                Balneário Camboriú — SC
+                Blumenau - SC
                 <br />
                 Brasil
               </p>
@@ -212,24 +211,17 @@ export default function Contato() {
                 Redes Sociais
               </h3>
               <div className="space-y-3">
-                <Link
-                  href="#"
+                <a
+                  href="https://www.instagram.com/ursprung.oficial/"
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex items-center gap-3 text-on-surface-variant hover:text-secondary transition-[color,transform] duration-300 ease-orchard text-sm hover:translate-x-0.5"
                 >
                   <span className="material-symbols-outlined text-lg">
                     photo_camera
                   </span>
-                  @ursprung.batidas
-                </Link>
-                <Link
-                  href="#"
-                  className="flex items-center gap-3 text-on-surface-variant hover:text-secondary transition-[color,transform] duration-300 ease-orchard text-sm hover:translate-x-0.5"
-                >
-                  <span className="material-symbols-outlined text-lg">
-                    tag
-                  </span>
-                  @ursprung
-                </Link>
+                  Instagram
+                </a>
               </div>
             </div>
           </div>

@@ -66,7 +66,7 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-const MAX_STACKED_TOASTS = 10;
+const MAX_STACKED_TOASTS = 2;
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [lines, setLines] = useState<CartLine[]>([]);
@@ -105,13 +105,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       return next;
     });
     setToasts((prev) => {
-      const next = [
-        ...prev,
-        { id: newToastId(), productId: id, addedQty: q },
-      ];
-      return next.length > MAX_STACKED_TOASTS
-        ? next.slice(-MAX_STACKED_TOASTS)
-        : next;
+      const incoming: CartToastItem = {
+        id: newToastId(),
+        productId: id,
+        addedQty: q,
+      };
+      if (prev.length < MAX_STACKED_TOASTS) return [...prev, incoming];
+      const [, ...rest] = prev;
+      return [...rest, incoming];
     });
   }, []);
 

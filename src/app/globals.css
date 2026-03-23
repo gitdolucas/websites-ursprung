@@ -11,6 +11,69 @@
   }
 }
 
+@keyframes cart-toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(0.3rem) scale(0.98);
+  }
+}
+
+.toast-flip-frame {
+  display: flex;
+  align-items: stretch;
+  perspective: 700px;
+}
+
+.toast-flip-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  transition: transform var(--duration-snappy) var(--ease-orchard);
+}
+
+.toast-flip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.toast-flip-face-back {
+  transform: rotateX(180deg);
+}
+
+.toast-flip-face-back-cta {
+  justify-content: center;
+  width: 100%;
+  border-radius: 0.625rem;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-label);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 0.65rem 0.85rem;
+  box-shadow:
+    0 8px 22px rgba(161, 254, 0, 0.26),
+    0 0 0 1px rgba(161, 254, 0, 0.34);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .group\/cart-toast:hover .toast-flip-inner,
+  .group\/cart-toast:focus-within .toast-flip-inner {
+    transform: rotateX(180deg);
+  }
+}
+
 html.dark {
   color-scheme: dark;
 }
@@ -158,6 +221,81 @@ a[href] {
   border: 1px solid rgba(72, 73, 55, 0.2);
 }
 
+/* Product flavor hovers: set --flavor-accent to product accentHex */
+.flavor-hover-glow {
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .flavor-hover-glow:hover {
+    box-shadow:
+      inset 0 0 88px color-mix(in srgb, var(--flavor-accent) 22%, transparent),
+      inset 0 0 36px color-mix(in srgb, var(--flavor-accent) 12%, transparent),
+      inset 0 0 0 1px color-mix(in srgb, var(--flavor-accent) 25%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .flavor-hover-glow--wide:hover {
+    box-shadow:
+      inset 0 0 100px color-mix(in srgb, var(--flavor-accent) 20%, transparent),
+      inset 0 0 40px color-mix(in srgb, var(--flavor-accent) 10%, transparent),
+      inset 0 0 0 1px color-mix(in srgb, var(--flavor-accent) 28%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .flavor-hover-glow--soft:hover {
+    box-shadow:
+      inset 0 0 72px color-mix(in srgb, var(--flavor-accent) 14%, transparent),
+      inset 0 0 0 1px color-mix(in srgb, var(--flavor-accent) 20%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flavor-hover-glow:hover,
+  .flavor-hover-glow--wide:hover,
+  .flavor-hover-glow--soft:hover {
+    box-shadow: none;
+  }
+}
+
+/* /produtos grid: flavor inset + same elevation as previous Tailwind hover */
+@media (prefers-reduced-motion: no-preference) {
+  .flavor-catalog-card:hover {
+    box-shadow:
+      inset 0 0 88px color-mix(in srgb, var(--flavor-accent) 22%, transparent),
+      inset 0 0 36px color-mix(in srgb, var(--flavor-accent) 12%, transparent),
+      inset 0 0 0 1px color-mix(in srgb, var(--flavor-accent) 25%, transparent),
+      0 24px 48px -28px rgba(0, 0, 0, 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .flavor-catalog-card-lg:hover {
+    box-shadow:
+      inset 0 4px 0 0 rgba(221, 255, 176, 0.06),
+      inset 0 0 88px color-mix(in srgb, var(--flavor-accent) 22%, transparent),
+      inset 0 0 36px color-mix(in srgb, var(--flavor-accent) 12%, transparent),
+      inset 0 0 0 1px color-mix(in srgb, var(--flavor-accent) 25%, transparent),
+      0 28px 64px -28px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(221, 255, 176, 0.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flavor-catalog-card:hover {
+    box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.45);
+  }
+
+  .flavor-catalog-card-lg:hover {
+    box-shadow:
+      inset 0 4px 0 0 rgba(221, 255, 176, 0.06),
+      0 28px 64px -28px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(221, 255, 176, 0.08);
+  }
+}
+
 @keyframes orchard-fade-up {
   from {
     opacity: 0;
@@ -270,6 +408,109 @@ a[href] {
     sans-serif;
   --font-body: var(--font-produtos-body), ui-sans-serif, system-ui, sans-serif;
   --font-label: var(--font-produtos-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* /sobre — typography override (Cormorant Infant + Newsreader via layout) */
+.sobre-theme {
+  --font-headline: var(--font-sobre-display), ui-serif, Georgia, serif;
+  --font-body: var(--font-sobre-body), ui-serif, Georgia, serif;
+  --font-label: var(--font-sobre-body), ui-serif, Georgia, serif;
+}
+
+.sobre-atmosphere {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+.sobre-atmosphere::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -22%;
+  height: min(85vh, 780px);
+  background:
+    radial-gradient(
+      ellipse 70% 50% at 8% 25%,
+      rgba(255, 117, 24, 0.14),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 92% 12%,
+      rgba(161, 254, 0, 0.08),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 55% 0%,
+      rgba(196, 246, 224, 0.06),
+      transparent 48%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sobre-atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    172deg,
+    transparent 0%,
+    transparent 36%,
+    rgba(14, 15, 3, 0.62) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sobre-monogram {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  font-size: clamp(3.5rem, 14vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  background: linear-gradient(
+    128deg,
+    rgba(255, 197, 169, 0.95) 0%,
+    rgba(221, 255, 176, 0.55) 45%,
+    rgba(161, 254, 0, 0.9) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 48px rgba(161, 254, 0, 0.12);
+}
+
+.sobre-editorial-rule {
+  height: 2px;
+  width: min(12rem, 40vw);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 117, 24, 0.9),
+    rgba(161, 254, 0, 0.5),
+    transparent
+  );
+}
+
+@keyframes sobre-float-soft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(-1.5deg);
+  }
+}
+
+.sobre-frame-float {
+  animation: sobre-float-soft 9s var(--ease-orchard) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sobre-frame-float {
+    animation: none;
+  }
 }
 
 .home-atmosphere {

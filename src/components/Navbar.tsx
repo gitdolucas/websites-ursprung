@@ -136,16 +136,16 @@ export default function Navbar() {
               <Link
                 href="/checkout"
                 onClick={() => setMenuOpen(false)}
-                className={`font-headline font-bold tracking-tighter uppercase py-3 px-2 rounded-lg transition-[color,background-color,opacity] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary flex items-center justify-between gap-3 ${
+                className={`font-headline font-bold tracking-tighter uppercase py-3 px-3 rounded-xl transition-[color,background-color,border-color,box-shadow] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary flex items-center justify-between gap-3 border shadow-sm ${
                   pathname === "/checkout"
-                    ? "text-primary bg-primary/10"
-                    : "text-on-surface opacity-90 hover:bg-surface-variant"
+                    ? "text-primary border-primary/50 bg-primary/18"
+                    : "text-on-surface border-primary/35 bg-primary/10 hover:border-primary/50 hover:bg-primary/16"
                 }`}
               >
                 <span className="flex items-center gap-3 min-w-0">
                   <span className="relative inline-flex shrink-0">
                     <span
-                      className="material-symbols-outlined text-2xl"
+                      className="material-symbols-outlined text-2xl text-primary"
                       aria-hidden
                     >
                       shopping_bag
@@ -155,7 +155,13 @@ export default function Navbar() {
                   Carrinho
                 </span>
                 {totalCount > 0 ? (
-                  <span className="tabular-nums text-sm font-headline text-on-surface-variant shrink-0">
+                  <span
+                    className={`tabular-nums text-sm font-headline shrink-0 ${
+                      pathname === "/checkout"
+                        ? "text-primary/75"
+                        : "text-on-surface-variant"
+                    }`}
+                  >
                     {totalCount} {totalCount === 1 ? "item" : "itens"}
                   </span>
                 ) : null}
